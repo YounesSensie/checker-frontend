@@ -4,9 +4,9 @@ import FindCheckerClient from '../_component/find-checker-cleint';
 import { getOriginalName } from '@/hook/correct-rul';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     params?: string[];
-  };
+  }>;
 }
 
 // Generate metadata for SEO
