@@ -13,7 +13,7 @@ function slugify(text: string): string {
     .replace(/-+$/, "");                 // Trim - from end
 }
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "http://localhost:3000"; // Use real domain in production
+  const baseUrl = "https://www.checkerist.com"; // Use real domain in production
 
   const urls: MetadataRoute.Sitemap = [];
 
@@ -24,6 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "daily",
     priority: 1.0,
   });
+   urls.push({
+    url:`${baseUrl}/become-checker`,
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 1.0,
+  })
 
   // Static check page
   urls.push({
@@ -32,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "daily",
     priority: 0.6,
   });
+ 
 
   // Generate dynamic check/[country]/[city] pages
   for (const [country, cities] of Object.entries(data)) {
