@@ -6,9 +6,9 @@ import { redirect } from 'next/navigation'
 export const metadata: Metadata = {
   title: "Become a Professional Travel Guide & Accommodation Checker | Earn Money Online - CheckerIst",
   description:
-    "Join thousands of travel checkers earning $50-200/day by checking tourists and checking accommodations online. Start your profitable travel career today with CheckerIst's trusted platform.",
+    "Join thousands of travel agents earning $30-150 per check by checking tourists and checking accommodations online. Start your profitable travel career today with CheckerIst's trusted platform.",
   keywords:
-    "travel guide jobs, accommodation checker jobs, earn money guiding tourists, online travel work, get paid to check hotels, travel expert opportunities, remote travel jobs, tourism guide income, accommodation inspector, travel consultant jobs, make money traveling, guide tourists online, check accommodations for money, travel industry jobs, become travel expert",
+    "travel guide jobs, accommodation Inspector jobs, earn money guiding tourists, online travel work, get paid to inspect hotels, travel expert opportunities, remote travel jobs, tourism guide income, accommodation inspector, travel consultant jobs, make money traveling, guide tourists online, check accommodations for money, travel industry jobs, become travel expert",
   authors: [{ name: "CheckerIst Expert Team" }],
   creator: "CheckerIst",
   publisher: "CheckerIst",

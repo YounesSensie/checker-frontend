@@ -122,9 +122,7 @@ const MainRegister = () => {
             </div>
           </div>
         </section>
-        {/** How it work */}
         <HowItWorksSection/>
-        
         <SuccessStorySection/>
         {/*<section className='bg-white mt-10 py-10 md:py-15  px-4'>
              <div className=' text-lg flex items-center justify-center p-8 md:p-10 '>
