@@ -42,7 +42,7 @@ const Header = () => {
                    fill
                    sizes='864px'
                    className=' object-cover'
-                   alt='Checkerist-header'
+                   alt='Verified accommodation inspection by local expert — CheckerIst'
                    priority
                   />
                 </div>

@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
   preload: true,    // Add this
 });
 export const metadata: Metadata = {
-  title: "CheckerIst | Verify Hotels & Restaurants Before You Travel",
-  description: "Book with confidence! CheckerIst connects you with professional local checkers who physically verify hotels and restaurants before you book. No surprises—just safe, verified stays.",
+  title: "Is Airbnb Legit? Verified Rentals by Local Experts | CheckerIst",
+  description: "Avoid rental scams! Get your Airbnb or vacation rental verified by local experts before you book. Safe, secure, and trusted by travelers worldwide.",
   icons:{
     icon: [
       {
@@ -43,14 +43,14 @@ export default function RootLayout({
         <head>
       <meta property="og:type" content="website" />
           <meta property="og:site_name" content="Checkerist" />
-          <meta property="og:title" content="CheckerIst | Verify Hotels & Restaurants Before You Travel" />
-          <meta
-            property="og:description"
-            content="Book with confidence! CheckerIst connects you with professional local checkers who physically verify hotels and restaurants before you book. No surprises—just safe, verified stays."
-          />
+         <meta property="og:title" content="Verify Before You Travel — CheckerIst"/>
+
+         <meta property="og:description" content="Get properties verified by trusted local inspectors. Avoid rental scams — book a verification before you arrive."/>
+
           <meta
             property="og:image"
-            content="https://www.checkerist.com/logo-2.png" // Replace with your default image URL
+            content="https://www.checkerist.com/logo-2.png"
+             // Replace with your default image URL
           />
           <meta property="og:url" content="https://www.checkerist.com" />
           <link rel="canonical" href="https://www.checkerist.com/" />
@@ -65,6 +65,7 @@ export default function RootLayout({
              "name": "Checkerist",
              "alternateName": ["Checkerist", "Checkerist"],
              "url": "https://www.checkerist.com/",
+             
            }),
          }}
         />

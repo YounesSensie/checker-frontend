@@ -32,10 +32,12 @@ const MainHero = () => {
             <div className="w-full max-w-4xl">
               <div className="text-center">
                 <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
-                  Verify Before You Travel
+                  Verify Your Accommodation Before You Travel
                 </h1>
                 <p className="text-sm text-white/90 sm:text-sm md:text-base mb-12 max-w-2xl mx-auto leading-relaxed">
-                  Connect with professional local checkers who physically verify hotels and restaurants before you book. No surprises, just perfect stays.
+                  Worried your Airbnb or rental might be a scam?
+                  CheckerIst connects you with trusted local inspectors who physically verify accommodations before you book — so you travel with confidence.
+
                 </p>
               </div>
               

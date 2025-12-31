@@ -4,9 +4,9 @@ import MainRegister from './_component/main-registrehome'
 import { getSession } from '@/auth'
 import { redirect } from 'next/navigation'
 export const metadata: Metadata = {
-  title: "Become a Professional Travel Guide & Accommodation Checker | Earn Money Online - CheckerIst",
+  title: "Become a Local Checker | Earn Money Inspecting Rentals",
   description:
-    "Join thousands of travel agents earning $30-150 per check by checking tourists and checking accommodations online. Start your profitable travel career today with CheckerIst's trusted platform.",
+    "Join CheckerIst as a local checker. Inspect hotels, Airbnb, and vacation rentals in your city and earn extra income. Flexible, part-time work for local experts",
   keywords:
     "travel guide jobs, accommodation Inspector jobs, earn money guiding tourists, online travel work, get paid to inspect hotels, travel expert opportunities, remote travel jobs, tourism guide income, accommodation inspector, travel consultant jobs, make money traveling, guide tourists online, check accommodations for money, travel industry jobs, become travel expert",
   authors: [{ name: "CheckerIst Expert Team" }],
@@ -25,11 +25,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.checkerist.com/become-checker",
+    
   },
   other: {
     "article:section": "Travel Careers",
     "article:tag": "travel guide jobs, accommodation checker, earn money online, tourism jobs",
   },
+  
 }
 const HomeChecker = async() => {
   const session = await getSession()

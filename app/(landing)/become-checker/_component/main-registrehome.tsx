@@ -65,15 +65,16 @@ const MainRegister = () => {
                   </span>
                 </div>
                 <h1 className="text-4xl  md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  Earn Side Money as
-                  Travel Agent,
+                  Work as a Local
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
                     Checker
-                  </span>  
+                  </span> 
+                  & Earn $30–$150 per Check
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed">
-                  A checkerist is a <span className='text-green-500'>travel agent</span> who inspects hotels, Airbnbs, and accommodations for travelers around the world in his area of expertise,
-                   earning between <span className=' text-green-500'>$30 and $150 </span>per check.
+               
+                   Join CheckerIst as a local checker. <span className='text-green-500'>Inspect hotels</span>, <span className='text-green-500'>Airbnb</span>, and vacation rentals in your city, 
+                   and earn between $30 and $150 per check. Flexible part-time work for local experts and freelancers in hospitality and travel services
                 </p>
                 {/* Key Benefits */}
                 <div className="grid grid-cols-2 gap-4 mb-8">
@@ -101,6 +102,7 @@ const MainRegister = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <button
+                    title="Join as Local Checker and Earn Money"
                     onClick={() => setShowForm(true)}
                     className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center justify-center"
                   >
@@ -124,12 +126,7 @@ const MainRegister = () => {
         </section>
         <HowItWorksSection/>
         <SuccessStorySection/>
-        {/*<section className='bg-white mt-10 py-10 md:py-15  px-4'>
-             <div className=' text-lg flex items-center justify-center p-8 md:p-10 '>
-                <h2 className=' text-gray-950/95 text-lg md:text-3xl font-bold text-center'>Frequently Asked Questions</h2>
-             </div>
-            <CheckerFaq/>
-        </section>*/}
+     
       </div>
   )
 }

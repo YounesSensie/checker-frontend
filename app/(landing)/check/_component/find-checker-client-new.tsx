@@ -132,7 +132,7 @@ export default function FindCheckerClient({
     } else if (filters.country) {
       return `Accommodation Checkers in ${filters.country.charAt(0).toUpperCase() + filters.country.slice(1)}`
     }
-    return "Find Your Perfect Accommodation Checker"
+    return "Check a Property Before Renting"
   }
 
   return (
@@ -155,6 +155,8 @@ export default function FindCheckerClient({
               </p>
             )}
           </div>
+          
+
           <CheckerSearchBox
             initialCountry={initialCountry}
             initialCity={initialCity}
@@ -165,6 +167,7 @@ export default function FindCheckerClient({
 
       {/* Main Content */}
       <section className="py-8 lg:py-12">
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col xl:flex-row gap-8">
             {/* Sidebar */}
@@ -175,6 +178,7 @@ export default function FindCheckerClient({
 
               {/* Mobile Sidebar */}
               <div className="xl:hidden">
+                
                 <button
                   className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-medium mb-4"
                   onClick={() => {
@@ -192,6 +196,9 @@ export default function FindCheckerClient({
 
             {/* Main Content */}
             <div className="xl:w-3/4">
+                <h2 className="text-lg text-gray-600 mt-2 mb-2 font-bold">
+                  Book a trusted local checker to verify your rental before you pay
+                </h2>
               {!isLoading && <CheckerTopFilter totalResults={totalResults} location={getLocationString()} />}
 
               <div className="mt-8">

@@ -64,7 +64,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                    fill
                    sizes='864px'
                    className=' object-cover'
-                   alt='Checkerist-header-mobile'
+                   alt='Verified accommodation inspection by local expert — CheckerIst'
                    priority
                   />
                 </div>

@@ -28,9 +28,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cityDisplay = cityOriginal || (citySlug ? citySlug.replace(/-/g, ' ') : '');
   const accommodationDisplay = accommodationSlug ? accommodationSlug.replace(/-/g, ' ') : '';
 
-  let title = 'Find Professional Accommodation Checkers | CheckerIst';
-  let description = 'Connect with verified local experts to check accommodations worldwide.';
+  let title = 'Check a Property Before Renting | CheckerIst';
+  let description = 'Not sure if a rental is legit? Book a trusted local checker to verify a property before you pay. Get photos, videos and inspection reports worldwide';
   let keywords = 'accommodation checker, hotel inspector, travel expert';
+
+  let titleog = 'Check a Property Before Renting'
+  let descog = 'Book a trusted local checker to verify a rental before you pay. Avoid scams with real on-site inspections.'
+  let key =''
 
   if (countryDisplay && cityDisplay && accommodationDisplay) {
     const formattedCountry = countryDisplay.charAt(0).toUpperCase() + countryDisplay.slice(1);
@@ -41,6 +45,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title = `${formattedAccommodation} Checkers in ${formattedCity}, ${formattedCountry} | CheckerIst`;
     description = `Find professional ${accommodationDisplay.toLowerCase()} checkers in ${formattedCity}, ${formattedCountry}.`;
     keywords = `${accommodationDisplay.toLowerCase()} checker ${cityDisplay}, ${countryDisplay} accommodation inspector`;
+    titleog = title
+    descog = description
   } else if (countryDisplay && cityDisplay) {
     const formattedCountry = countryDisplay.charAt(0).toUpperCase() + countryDisplay.slice(1);
     const formattedCity = cityDisplay.charAt(0).toUpperCase() + cityDisplay.slice(1);
@@ -48,12 +54,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title = `Accommodation Checkers in ${formattedCity}, ${formattedCountry} | CheckerIst`;
     description = `Professional accommodation checkers in ${formattedCity}, ${formattedCountry}.`;
     keywords = `accommodation checker ${cityDisplay}, ${countryDisplay} property inspector`;
+    titleog = title
+    descog = description
   } else if (countryDisplay) {
     const formattedCountry = countryDisplay.charAt(0).toUpperCase() + countryDisplay.slice(1);
     
     title = `Accommodation Checkers in ${formattedCountry} | CheckerIst`;
     description = `Find professional accommodation checkers across ${formattedCountry}.`;
     keywords = `accommodation checker ${countryDisplay}, ${countryDisplay} property inspector`;
+    titleog = title;
+    descog = description
   }
 
   const baseUrl = 'https://www.checkerist.com'; // Replace with production URL
@@ -68,8 +78,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       type: 'website',
       url: currentUrl,
-      title,
-      description,
+      title:titleog,
+      description: descog,
       siteName: 'CheckerIst',
     },
     alternates: { canonical: currentUrl },
