@@ -35,19 +35,19 @@ export default function AboutUsSection() {
             {/* Statistics */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-12 pt-8 border-t border-gray-200">
               <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">4,958</div>
+                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">31</div>
                 <div className="text-sm text-gray-500">Verified Properties</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">2,869</div>
+                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">6</div>
                 <div className="text-sm text-gray-500">Active Checkers</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">2M</div>
+                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">33</div>
                 <div className="text-sm text-gray-500">Happy Travelers</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">574,974</div>
+                <div className="text-2xl lg:text-3xl font-bold text-blue-600 mb-2">45</div>
                 <div className="text-sm text-gray-500">Verifications</div>
               </div>
             </div>
