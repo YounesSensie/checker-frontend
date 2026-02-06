@@ -39,11 +39,13 @@ const Header = () => {
                 <div className='relative h-8 w-8' >
                   <Image
                    src="/img/logo1.png"
-                   fill
-                   sizes='864px'
-                   className=' object-cover'
+                   width={864}
+                   height={400}  // Set actual dimensions
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 864px"
+                   className='object-cover'
                    alt='Verified accommodation inspection by local expert — CheckerIst'
                    priority
+                   quality={85}  // Slightly reduce for faster load
                   />
                 </div>
                 <span className="text-white text-xl font-bold">CheckerIst</span>

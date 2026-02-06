@@ -8,8 +8,21 @@ import { getSession } from '@/auth'
 import { redirect } from 'next/navigation'
 import FeaturesSection from './_component/recomanded-hotel'
 import AboutUsSection from './_component/aboutus/about-us'
+import { Metadata } from 'next'
 
-
+export const metadata: Metadata = {
+  title: "Is Airbnb Legit? Verified Rentals by Local Experts | CheckerIst",
+  description: "Avoid rental scams! Get your Airbnb or vacation rental verified by local experts before you book. Safe, secure, and trusted by travelers worldwide.",
+  icons:{
+    icon: [
+      {
+        url:"/img/logo1.png",
+        href:"/img/logo1.png",
+        sizes: "32x32" 
+      }
+    ]
+  }
+};
 const HomePage = async() => {
   const session = await getSession()
     if(session && session.user.id && session.user.role){

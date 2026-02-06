@@ -428,8 +428,8 @@ const FeaturesComp = () => {
           <div className="relative">
             <div className="absolute -inset-4 bg-indigo-500/5 blur-3xl rounded-full" />
             <TruthSlider
-              filteredImage="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=1000&auto=format&fit=crop"
-              truthImage="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1000&auto=format&fit=crop"
+              filteredImage="/img/real-place.avif"
+              truthImage="/img/fake-place.avif"
             />
           </div>
         </div>

@@ -5,6 +5,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { Eye } from "lucide-react"
+import Image from "next/image"
 
 
 interface TruthSliderProps {
@@ -51,18 +52,26 @@ export function TruthSlider({ filteredImage, truthImage, className }: TruthSlide
       onTouchMove={onTouchMove}
     >
       {/* Filtered Image (Base) */}
-      <img
+      <Image
         src={filteredImage || "/placeholder.svg"}
         alt="Filtered"
         className="absolute inset-0 h-full w-full object-cover"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 864px"
+        fill
+        priority
+        quality={90}
       />
 
       {/* Truth Image (Overlay) */}
       <motion.div style={{ clipPath }} className="absolute inset-0 z-10">
-        <img
+        <Image
           src={truthImage || "/placeholder.svg"}
           alt="Truth Revealed"
           className="absolute inset-0 h-full w-full object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 864px"
+          fill
+          priority
+          quality={90}
         />
 
         {/* Truth Label */}

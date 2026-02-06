@@ -199,6 +199,71 @@ export default function FindCheckerClient({
                 <h2 className="text-lg text-gray-600 mt-2 mb-2 font-bold">
                   Book a trusted local checker to verify your rental before you pay
                 </h2>
+                    <section className="py-4 lg:py-2">
+                      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        
+                        {/* ⭐ ADD THIS: SEO-friendly placeholder content when no results */}
+                        {!isLoading && searchResults.length === 0 && (
+                          <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 my-8">
+                            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                              No Checkers Available Yet in {getLocationString()}
+                            </h2>
+                            <div className="prose max-w-none text-gray-700">
+                              <p className="mb-4">
+                              { ` We're actively expanding our network of trusted local accommodation checkers 
+                                to {filters.city || filters.country || 'this area'}. CheckerIst connects 
+                                travelers with verified local experts who physically inspect rental properties 
+                                before you book.`}
+                              </p>
+                              
+                              <h3 className="text-xl font-semibold mt-6 mb-3">
+                                Why Use CheckerIst in {filters.country || 'Your Destination'}?
+                              </h3>
+                              <ul className="list-disc pl-6 space-y-2">
+                                <li>Avoid rental scams and fake listings</li>
+                                <li>Get real photos and videos of the actual property</li>
+                                <li>Verify amenities, cleanliness, and safety before paying</li>
+                                <li>Save money by avoiding disappointing accommodations</li>
+                              </ul>
+
+                              <h3 className="text-xl font-semibold mt-6 mb-3">
+                                Interested in Becoming a Checker?
+                              </h3>
+                              <p>
+                                Are you a local in {filters.city || filters.country || 'this area'}? 
+                                Join our network and earn money by helping travelers verify accommodations.
+                              </p>
+                              <a 
+                                href="/become-checker" 
+                                className="inline-block mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
+                              >
+                                Become a Checker
+                              </a>
+
+                              <h3 className="text-xl font-semibold mt-8 mb-3">
+                                How CheckerIst Works
+                              </h3>
+                              <ol className="list-decimal pl-6 space-y-2">
+                                <li>{`Find a rental property you're interested in`}</li>
+                                <li>Book a local checker through our platform</li>
+                                <li>Receive detailed inspection report with photos/videos</li>
+                                <li>Make an informed decision before committing</li>
+                              </ol>
+
+                              <div className="bg-white p-6 rounded-lg mt-6 border border-gray-200">
+                                <h4 className="font-semibold mb-2">Get Notified</h4>
+                                <p className="text-sm mb-4">
+                                   we&apos;ll email you when checkers become available in {getLocationString()}
+                                </p>
+                                {/* Add email signup form here */}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* ... rest of existing code ... */}
+                      </div>
+                    </section>
               {!isLoading && <CheckerTopFilter totalResults={totalResults} location={getLocationString()} />}
 
               <div className="mt-8">

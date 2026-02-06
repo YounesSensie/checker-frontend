@@ -82,6 +82,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: descog,
       siteName: 'CheckerIst',
     },
+        other: {
+      'application/ld+json': JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        'name': 'CheckerIst',
+        'description': description,
+        'provider': {
+          '@type': 'Organization',
+          'name': 'CheckerIst',
+          'url': 'https://www.checkerist.com'
+        },
+        'areaServed': {
+          '@type': 'City',
+          'name': cityDisplay,
+          'containedIn': {
+            '@type': 'Country',
+            'name': countryDisplay
+          }
+        },
+        'serviceType': 'Accommodation Inspection Service',
+        'offers': {
+          '@type': 'Offer',
+          'availability': 'https://schema.org/InStock'
+        }
+      })
+    },
     alternates: { canonical: currentUrl },
   };
 }

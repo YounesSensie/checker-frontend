@@ -3,18 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: 'swap', // Add this
-  preload: true,    // Add this
-});
+import { Inter } from 'next/font/google';
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap', // Add this
-  preload: true,    // Add this
+// ✅ Optimize font loading
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap', // ⭐ Critical for performance
+  preload: true,
+  variable: '--font-inter',
 });
 export const metadata: Metadata = {
   title: "Is Airbnb Legit? Verified Rentals by Local Experts | CheckerIst",
@@ -38,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={inter.variable}
       >
         <head>
       <meta property="og:type" content="website" />
