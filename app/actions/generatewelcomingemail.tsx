@@ -91,7 +91,7 @@ export function generateWelcomeCheckerHTML(fullName: string): string {
                     <p style="margin:0 0 20px;color:#a8b2c1;font-size:14px;line-height:1.7;">
                       We've already set up everything you need to get started. Head to your dashboard to complete your Checker profile and start receiving client requests.
                     </p>
-                    <a href="${process.env.NEXT_PUBLIC_APP_URL}/dashboard"
+                    <a href="${process.env.NEXT_PUBLIC_APP_URL}/checker/profile"
                        style="display:inline-block;background:#e94560;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;">
                       Go to My Dashboard →
                     </a>

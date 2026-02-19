@@ -4,6 +4,8 @@ import { UserRole } from "@/app/generated/prisma"
 import { logout } from "@/auth"
 import { getUserSession } from "@/lib/get-user-session"
 import { Award, BarChart3, Briefcase, Calendar1, Clock, DollarSign, FileText, LayoutDashboard, Loader2, LogOut, MessageSquare, Settings, Shield, Star, User2, Users, X } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 interface MenuItem {
   id: string
@@ -166,13 +168,21 @@ const Sidebar = ({
         {/* Logo & Close Button */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-teal-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
-              <Award className="w-6 h-6" />
-            </div>
-            <div>
-              <h1 className="font-bold text-gray-900 text-lg">Checkerist</h1>
-              <p className="text-xs text-gray-500">Professional Platform</p>
-            </div>
+            <Link href="/" className="flex items-center mr-8">
+                <div className='relative h-10 w-10' >
+                  <Image
+                   src="/img/logo1.png"
+                   width={864}
+                   height={400}  // Set actual dimensions
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 864px"
+                   className='object-cover'
+                   alt='Verified accommodation inspection by local expert — CheckerIst'
+                   priority
+                   quality={85}  // Slightly reduce for faster load
+                  />
+                </div>
+                <span className="text-gray-600 text-2xl font-bold">CheckerIst</span>
+              </Link>
           </div>
           <button
             onClick={onClose}
@@ -181,9 +191,6 @@ const Sidebar = ({
             <X className="w-5 h-5 text-gray-500" />
           </button>
         </div>
-
-        
-
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto p-4 space-y-1">
           {loading ? (

@@ -11,6 +11,7 @@ interface MobileMenuProps {
 
 const MobileMenu = ({ onClose }: MobileMenuProps) => {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [expandedMenus, setExpandedMenus] = useState<string[]>([]);
 
   const toggleMenu = (menuName: string) => {
@@ -35,21 +36,20 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
   
     {
       name: "About us",
-      href: "#about",
+      href: isHome ? "#about"   : "/#about",
       hasChildren: false,
     },
    
     {
       name: "Contact",
-      href: "#contact",
+      href: isHome ? "#contact" : "/#contact",
       hasChildren: false,
     },
   ];
 
   const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("#") || href.startsWith("/#")) return false;
     return pathname.startsWith(href);
   };
 
