@@ -8,18 +8,17 @@ interface MainMenuProps {
 
 const MainMenu = ({ style = "" }: MainMenuProps) => {
   const pathname = usePathname();
-
+  const isHome = pathname === "/";
   const menuItems = [
     { name: "Home", href: "/", hasChildren: false },
     { name: "Find Checkers", href: "/check", hasChildren: false },
-    { name: "About us", href: "#about", hasChildren: false },
-    { name: "Contact", href: "#contact", hasChildren: false },
+    { name: "About us", href: isHome ? "#about"   : "/#about" },
+    { name: "Contact",  href: isHome ? "#contact" : "/#contact" },
   ];
 
-  const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
+ const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("#") || href.startsWith("/#")) return false;
     return pathname.startsWith(href);
   };
 

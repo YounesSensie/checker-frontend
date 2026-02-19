@@ -416,9 +416,7 @@ export default function CheckerProfileCompletionPage() {
                   <select
                     value={formData.businessCountry}
                     onChange={e => {
-                      const newCountry = e.target.value
-                      // Clear cities when country changes — old cities are invalid
-                      setFormData(prev => ({ ...prev, businessCountry: newCountry, coverageAreas: [] }))
+                      setFormData(prev => ({ ...prev, businessCountry: e.target.value }))
                       setHasChanges(true)
                     }}
                     disabled={saveStatus === 'saving'}
@@ -431,86 +429,38 @@ export default function CheckerProfileCompletionPage() {
                   </select>
                 </div>
 
-                {/* Dynamic city checkboxes — only shown once a country is selected */}
-                {formData.businessCountry && (
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <label className="block text-sm font-semibold text-gray-700">
-                        Cities in {formData.businessCountry}
-                      </label>
-                      <div className="flex gap-2 text-xs">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const all = (data as Record<string, string[]>)[formData.businessCountry] ?? []
-                            setFormData(prev => ({ ...prev, coverageAreas: all }))
-                            setHasChanges(true)
-                          }}
-                          className="text-[#10b981] font-semibold hover:underline disabled:opacity-40"
-                          disabled={saveStatus === 'saving'}
-                        >
-                          Select all
-                        </button>
-                        <span className="text-gray-300">|</span>
-                        <button
-                          type="button"
-                          onClick={() => { setFormData(prev => ({ ...prev, coverageAreas: [] })); setHasChanges(true) }}
-                          className="text-gray-400 font-semibold hover:underline disabled:opacity-40"
-                          disabled={saveStatus === 'saving'}
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 max-h-48 overflow-y-auto pr-1">
-                      {((data as Record<string, string[]>)[formData.businessCountry] ?? []).map(city => {
-                        const selected = formData.coverageAreas.includes(city)
-                        return (
-                          <button
-                            key={city}
-                            type="button"
-                            disabled={saveStatus === 'saving'}
-                            onClick={() => {
-                              setFormData(prev => ({
-                                ...prev,
-                                coverageAreas: selected
-                                  ? prev.coverageAreas.filter(c => c !== city)
-                                  : [...prev.coverageAreas, city]
-                              }))
-                              setHasChanges(true)
-                            }}
-                            className={`px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all active:scale-95 disabled:opacity-50 ${
-                              selected
-                                ? 'text-white shadow-md'
-                                : 'bg-white border-2 border-gray-200 text-gray-600 hover:border-[#10b981] hover:text-[#10b981]'
-                            }`}
-                            style={selected ? { background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 3px 10px rgba(16,185,129,0.3)' } : {}}
-                          >
-                            <MapPin className="w-3 h-3 flex-shrink-0" />
-                            {city}
-                            {selected && <Check className="w-3 h-3 flex-shrink-0" />}
-                          </button>
-                        )
-                      })}
-                    </div>
-
-                    {/* Summary of selected */}
+                {/* City tag input */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-sm font-semibold text-gray-700">Cities</label>
                     {formData.coverageAreas.length > 0 && (
-                      <p className="mt-2 text-xs text-[#10b981] font-semibold">
-                        ✓ {formData.coverageAreas.length} {formData.coverageAreas.length === 1 ? 'city' : 'cities'} selected
-                      </p>
+                      <button
+                        type="button"
+                        onClick={() => { setFormData(prev => ({ ...prev, coverageAreas: [] })); setHasChanges(true) }}
+                        disabled={saveStatus === 'saving'}
+                        className="text-xs text-gray-400 font-semibold hover:text-red-500 transition-colors disabled:opacity-40"
+                      >
+                        Clear all
+                      </button>
                     )}
                   </div>
-                )}
 
-                {/* Placeholder when no country selected */}
-                {!formData.businessCountry && (
-                  <div className="rounded-xl border-2 border-dashed border-gray-200 p-4 text-center text-sm text-gray-400">
-                    <MapPin className="w-6 h-6 mx-auto mb-1 opacity-40" />
-                    Select a country above to choose cities
-                  </div>
-                )}
+                  {/* Tag input box */}
+                  <CityTagInput
+                    cities={formData.coverageAreas}
+                    disabled={saveStatus === 'saving'}
+                    onChange={cities => {
+                      setFormData(prev => ({ ...prev, coverageAreas: cities }))
+                      setHasChanges(true)
+                    }}
+                  />
+
+                  {formData.coverageAreas.length > 0 && (
+                    <p className="mt-2 text-xs text-[#10b981] font-semibold">
+                      ✓ {formData.coverageAreas.length} {formData.coverageAreas.length === 1 ? 'city' : 'cities'} added
+                    </p>
+                  )}
+                </div>
               </div>
             </GlassCard>
           </div>
@@ -614,6 +564,89 @@ function GlassCard({
       <h3 className="text-xl font-bold mb-6 text-gray-800">{title}</h3>
       {children}
     </section>
+  )
+}
+
+// ── CityTagInput ──
+function CityTagInput({
+  cities,
+  disabled,
+  onChange,
+}: {
+  cities: string[]
+  disabled: boolean
+  onChange: (cities: string[]) => void
+}) {
+  const [inputValue, setInputValue] = useState('')
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const addCity = (raw: string) => {
+    const trimmed = raw.trim()
+    if (!trimmed) return
+    // Support pasting comma-separated cities: "Paris, Lyon, Nice"
+    const incoming = trimmed
+      .split(',')
+      .map(c => c.trim())
+      .filter(c => c.length > 0 && !cities.includes(c))
+    if (incoming.length === 0) return
+    onChange([...cities, ...incoming])
+    setInputValue('')
+  }
+
+  const removeCity = (city: string) => {
+    onChange(cities.filter(c => c !== city))
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault()
+      addCity(inputValue)
+    }
+    if (e.key === 'Backspace' && inputValue === '' && cities.length > 0) {
+      removeCity(cities[cities.length - 1])
+    }
+  }
+
+  return (
+    <div
+      className={`min-h-[52px] w-full rounded-xl border-2 bg-white/50 px-3 py-2 flex flex-wrap gap-1.5 items-center cursor-text transition-all ${
+        disabled ? 'opacity-50 pointer-events-none' : 'border-gray-200 hover:shadow-md focus-within:border-[#10b981]'
+      }`}
+      onClick={() => inputRef.current?.focus()}
+    >
+      {/* Existing tags */}
+      {cities.map(city => (
+        <span
+          key={city}
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold text-white"
+          style={{ background: 'linear-gradient(135deg, #10b981, #059669)', boxShadow: '0 2px 8px rgba(16,185,129,0.25)' }}
+        >
+          <MapPin className="w-2.5 h-2.5 flex-shrink-0" />
+          {city}
+          <button
+            type="button"
+            onClick={e => { e.stopPropagation(); removeCity(city) }}
+            className="ml-0.5 hover:opacity-70 transition-opacity leading-none"
+            aria-label={`Remove ${city}`}
+          >
+            ×
+          </button>
+        </span>
+      ))}
+
+      {/* Input */}
+      <input
+        ref={inputRef}
+        type="text"
+        value={inputValue}
+        onChange={e => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown}
+        onBlur={() => addCity(inputValue)}
+        placeholder={cities.length === 0 ? 'Type a city and press Enter…' : 'Add another city…'}
+        className="flex-1 min-w-[140px] bg-transparent text-sm text-gray-700 placeholder-gray-400 focus:outline-none py-0.5"
+        disabled={disabled}
+      />
+    </div>
   )
 }
 

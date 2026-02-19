@@ -28,7 +28,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "daily",
     priority: 1.0,
   })
-
+  urls.push({
+    url:`${baseUrl}/safety`,
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 1.0,
+  })
+  urls.push({
+    url:`${baseUrl}/blog`,
+    lastModified: new Date(),
+    changeFrequency: "daily",
+    priority: 1.0,
+  })
   // Static check page
   urls.push({
     url: `${baseUrl}/check`,
