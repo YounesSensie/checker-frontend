@@ -69,35 +69,7 @@ export default function ComingSoon() {
         </p>
 
         {/* Countdown Timer */}
-        <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto mb-12">
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-transform">
-            <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-              {timeLeft.days.toString().padStart(2, '0')}
-            </div>
-            <div className="text-sm md:text-base text-gray-600 uppercase tracking-wider">Days</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-transform">
-            <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-              {timeLeft.hours.toString().padStart(2, '0')}
-            </div>
-            <div className="text-sm md:text-base text-gray-600 uppercase tracking-wider">Hours</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-transform">
-            <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-              {timeLeft.minutes.toString().padStart(2, '0')}
-            </div>
-            <div className="text-sm md:text-base text-gray-600 uppercase tracking-wider">Minutes</div>
-          </div>
-          
-          <div className="bg-gradient-to-br from-pink-50 to-red-50 rounded-2xl p-6 shadow-lg transform hover:scale-105 transition-transform">
-            <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-              {timeLeft.seconds.toString().padStart(2, '0')}
-            </div>
-            <div className="text-sm md:text-base text-gray-600 uppercase tracking-wider">Seconds</div>
-          </div>
-        </div>
+       
 
         {/* Progress Bar */}
         <div className="max-w-md mx-auto mb-8">
