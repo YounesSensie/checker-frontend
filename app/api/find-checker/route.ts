@@ -17,12 +17,6 @@ export async function GET(request: NextRequest) {
 
     const skip = (page - 1) * limit
 
-    // ─────────────────────────────────────────────────────────────────────
-    // BUG FIX: The original code only filtered on `user.country`.
-    // But checkers typically fill in `businessCountry` on their profile,
-    // NOT the `user.country` account field.  We now use OR logic so the
-    // filter matches whichever field is populated.
-    // ─────────────────────────────────────────────────────────────────────
     const where: any = {
       basePrice:     { gte: priceMin, lte: priceMax },
       averageRating: { gte: minRating },
@@ -37,7 +31,17 @@ export async function GET(request: NextRequest) {
     }
 
     if (city) {
-      where.businessCity = { contains: city, mode: "insensitive" }
+      // ✅ FIX: also search coverageAreas array when businessCity doesn't match.
+      // Checkers may have a city saved only in coverageAreas and not businessCity.
+      where.AND = [
+        ...(where.AND || []),
+        {
+          OR: [
+            { businessCity: { contains: city, mode: "insensitive" } },
+            { coverageAreas: { has: city } },
+          ]
+        }
+      ]
     }
 
     if (accommodation) {
@@ -48,7 +52,6 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Sort mapping
     const orderBy: any = (() => {
       switch (sortBy) {
         case "price":      return { basePrice: "asc" }
@@ -75,14 +78,14 @@ export async function GET(request: NextRequest) {
           businessCity: true,
           businessCountry: true,
           businessAddress: true,
-          coverageAreas: true,
+          coverageAreas: true,      // ✅ selected so we can fall back to it
           user: {
             select: {
               avatar: true,
               languages: true,
               firstName: true,
               lastName: true,
-              country: true,   // kept so we can fall back to it below
+              country: true,
             },
           },
           specialties: {
@@ -96,15 +99,18 @@ export async function GET(request: NextRequest) {
     ])
 
     const formattedCheckers = checkers.map((checker) => {
-      // ── Resolve the display country ──────────────────────────────────
-      // Prefer the checker profile's businessCountry; fall back to the
-      // user-level country so the card never shows "Unknown".
       const resolvedCountry =
         checker.businessCountry ||
         checker.user?.country ||
         "Unknown"
 
-      const resolvedCity = checker.businessCity || "Unknown"
+      // ✅ FIX: fall back to coverageAreas[0] when businessCity is null/empty.
+      // This covers checkers who filled in their profile via the profile page
+      // (which saves to coverageAreas) before businessCity was being synced.
+      const resolvedCity =
+        checker.businessCity ||
+        checker.coverageAreas?.[0] ||
+        null   // show nothing rather than "Unknown" when truly unset
 
       return {
         id: checker.id,
@@ -122,10 +128,14 @@ export async function GET(request: NextRequest) {
         specialties: checker.specialties.map((s) => s.category),
         location: {
           country: resolvedCountry,
+          // ✅ city is now populated from coverageAreas fallback
           city: resolvedCity,
           region: checker.businessAddress || "",
         },
-        coverageArea: checker.coverageAreas?.join(", ") || "Multiple areas",
+        // ✅ Also expose the full coverage list for the card to show all cities
+        coverageArea: checker.coverageAreas?.length
+          ? checker.coverageAreas.join(", ")
+          : resolvedCity || "Multiple areas",
         languages: checker.user?.languages?.length
           ? checker.user.languages
           : ["English"],

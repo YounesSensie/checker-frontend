@@ -5,13 +5,14 @@ import React, { useState } from 'react'
 const PageTest = () => {
   const[loading , setloading] = useState(false)
   const user = {
-    firstName: "Younes",
-    lastName: "Sellimi",
-    email: "younes10sillimi@gmail.com",
+    firstName: "Saif",
+    lastName: "Allah Lajmi",
+    email: "lajmi.saif.ellah@gmail.com",
     role: "CHECKER",
   }
   const handelClick = async() => {
     try{
+      setloading(true)
      await sendWelcomeCheckerEmail(user as any)
     }catch(error){
 
@@ -20,7 +21,7 @@ const PageTest = () => {
     }
   }
     return (
-    <div>
+    <div className='flex p-5 mt-16'>
       <button onClick={handelClick} disabled={loading}>
         {loading ? "Loading..." : "Test Button"}
       </button>

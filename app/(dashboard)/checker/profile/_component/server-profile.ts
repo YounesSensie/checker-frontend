@@ -11,6 +11,8 @@ interface ProfileUpdateData {
   languages?: string[]
   coverageCountry?: string
   coverageCities?: string[]
+  // ✅ NEW: first selected city written to businessCity so the card can display it
+  businessCity?: string
   basePrice?: number
   professionalTitle?: string
   description?: string
@@ -47,39 +49,32 @@ export async function uploadCheckerAvatar(
       return { success: false, error: "No file provided" }
     }
 
-    // Validate file type
     if (!file.type.startsWith('image/')) {
       return { success: false, error: "File must be an image" }
     }
 
-    // Validate file size (5MB max)
     if (file.size > 5 * 1024 * 1024) {
       return { success: false, error: "File size must be less than 5MB" }
     }
 
-    // Get current user to check for existing avatar
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       select: { avatar: true }
     })
 
-    // Delete old avatar if exists
     if (user?.avatar) {
       try {
         await del(user.avatar)
       } catch (error) {
         console.error("Failed to delete old avatar:", error)
-        // Continue anyway
       }
     }
 
-    // Upload to Vercel Blob
     const blob = await put(`avatars/${session.user.id}-${Date.now()}.${file.name.split('.').pop()}`, file, {
       access: 'public',
       addRandomSuffix: true,
     })
 
-    // Update user avatar in database
     await prisma.user.update({
       where: { id: session.user.id },
       data: { avatar: blob.url }
@@ -124,7 +119,6 @@ export async function updateCheckerProfile(
       return { success: false, error: "Unauthorized" }
     }
 
-    // Verify user is a checker
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       include: { checkerProfile: true }
@@ -138,7 +132,6 @@ export async function updateCheckerProfile(
       return { success: false, error: "Checker profile not found" }
     }
 
-    // Update user languages if provided
     if (data.languages !== undefined) {
       await prisma.user.update({
         where: { id: session.user.id },
@@ -146,7 +139,6 @@ export async function updateCheckerProfile(
       })
     }
 
-    // Update checker profile
     const updateData: any = {}
     
     if (data.coverageCountry !== undefined) {
@@ -155,6 +147,18 @@ export async function updateCheckerProfile(
     
     if (data.coverageCities !== undefined) {
       updateData.coverageAreas = data.coverageCities
+
+      // ✅ FIX: always sync businessCity with the first selected city.
+      // businessCity is what the API and CheckerCard use for display.
+      // coverageAreas is the full list; businessCity is the "primary" one.
+      updateData.businessCity = data.coverageCities.length > 0
+        ? data.coverageCities[0]
+        : null
+    }
+
+    // ✅ Allow explicit businessCity override (e.g. if caller passes it separately)
+    if (data.businessCity !== undefined) {
+      updateData.businessCity = data.businessCity
     }
     
     if (data.basePrice !== undefined) {
@@ -174,7 +178,6 @@ export async function updateCheckerProfile(
       data: updateData
     })
 
-    // Recalculate completion percentage
     const updatedUser = await prisma.user.findUnique({
       where: { id: session.user.id },
       include: { checkerProfile: true }
@@ -185,18 +188,17 @@ export async function updateCheckerProfile(
       updatedUser!.checkerProfile
     )
 
-    // Update checker profile status if 100% complete
     if (completionPercentage === 100 && user.checkerProfile.status === 'PENDING') {
       await prisma.checkerProfile.update({
         where: { id: user.checkerProfile.id },
         data: { 
-          status: 'APPROVED', // Auto-approve when profile is complete
+          status: 'APPROVED',
           verifiedAt: new Date()
         }
       })
     }
 
-    revalidatePath('/dashboard/checker/profile')
+    revalidatePath('/checker/profile')
     
     return { 
       success: true, 
@@ -258,8 +260,10 @@ export async function getCheckerProfileCompletion(): Promise<{
           id: user.checkerProfile.id,
           professionalTitle: user.checkerProfile.professionalTitle,
           description: user.checkerProfile.description,
-          basePrice: Number(user.checkerProfile.basePrice), // Convert Decimal to number
+          basePrice: Number(user.checkerProfile.basePrice),
           businessCountry: user.checkerProfile.businessCountry,
+          // ✅ Return both so the profile form can show the saved primary city
+          businessCity: user.checkerProfile.businessCity,
           coverageAreas: user.checkerProfile.coverageAreas,
           status: user.checkerProfile.status
         },
@@ -302,7 +306,7 @@ export async function deleteCheckerAvatar(): Promise<{ success: boolean; error?:
       })
     }
 
-    revalidatePath('/dashboard/checker/profile')
+    revalidatePath('/checker/profile')
     
     return { success: true }
   } catch (error) {

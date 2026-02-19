@@ -1,7 +1,8 @@
 import { getSession } from '@/auth'
 import { redirect } from 'next/navigation'
 import React from 'react'
-import CheckerProfileCompletionPage from './_component/main-profile'
+import CheckerProfileCompletionPage from './_component/new-main-profile'
+//import CheckerProfileCompletionPage from './_component/main-profile'
 
 const ProfilePage = async() => {
     const session = await getSession()
