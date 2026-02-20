@@ -8,7 +8,7 @@ export default function PublicLayout({children}:{children:React.ReactNode}){
         <div className=" bg-purple-50 text-purple-700">
             {/** Navigation */}
             <Header/>
-            <div className=" h-screen">
+            <div className=" h-screen ">
                 {children}
                 
             </div>    

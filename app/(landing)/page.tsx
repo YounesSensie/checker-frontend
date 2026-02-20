@@ -9,6 +9,8 @@ import { redirect } from 'next/navigation'
 import FeaturesSection from './_component/recomanded-hotel'
 import AboutUsSection from './_component/aboutus/about-us'
 import { Metadata } from 'next'
+import prisma from '@/lib/db'
+import PopularCheckers from './_component/popularchecker'
 
 export const metadata: Metadata = {
   title: "Is Airbnb Legit? Verified Rentals by Local Experts | CheckerIst",
@@ -28,13 +30,52 @@ const HomePage = async() => {
     if(session && session.user.id && session.user.role){
       redirect(`/${session.user.role.toLocaleLowerCase()}`)
     }
+    // Fetch top-rated, approved checkers for the popular section
+  const checkerList = await prisma.checkerProfile.findMany({
+    where: {
+      status: "APPROVED",
+      
+    },
+    orderBy: [
+      { averageRating: "desc" },
+      { totalReviews: "desc" },
+    ],
+    take: 12,
+    select: {
+      id: true,
+      userId: true,
+      professionalTitle: true,
+      description: true,
+      businessCity: true,
+      businessCountry: true,
+      averageRating: true,
+      totalReviews: true,
+      status: true,
+      user: {
+        select: {
+          firstName: true,
+          lastName: true,
+          avatar: true,
+        },
+      },
+    },
+  })
+
+  // Serialize Decimal fields to plain numbers for client component
+  const serializedCheckers = checkerList.map((c) => ({
+    ...c,
+    averageRating: Number(c.averageRating),
+  }))
+
   return (
     <div className=' h-full'>
       {/** hero compoent */}
       <MainHero/>
       {/* Popular Destinations Section */}
-       <FeaturesComp/>
+      <FeaturesComp/>
       {/* Add Banner Section */}
+       <PopularCheckers checkers={serializedCheckers} />
+
       <AddBanner />
       <FeaturesSection/>
       <AboutUsSection/>

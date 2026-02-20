@@ -400,7 +400,7 @@ const FeaturesComp = () => {
     },
   ];
   return (
-    <section className="relative pt-20 pb-32  overflow-hidden">
+    <section className="relative pt-20 pb-32 overflow-hidden ">
         <BackgroundRippleEffect/>
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -411,7 +411,7 @@ const FeaturesComp = () => {
               <span className="text-sm font-medium text-slate-600">See beyond the filter</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-slate-600 leading-[1.1] mb-8">
+            <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-slate-600 leading-[1.1] mb-8">
               Stop being a{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 italic">
                 captive customer
@@ -419,7 +419,7 @@ const FeaturesComp = () => {
               to filtered scams.
             </h1>
 
-            <p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-lg">
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed mb-10 max-w-lg">
               We give you the local eyes to find the comfort your soul actually deserves.
             </p>            
           </div>

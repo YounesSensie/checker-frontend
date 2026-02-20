@@ -1,5 +1,4 @@
 "use client"
-
 import { UserRole } from "@/app/generated/prisma"
 import { logout } from "@/auth"
 import { getUserSession } from "@/lib/get-user-session"
@@ -44,7 +43,6 @@ const getMenuItems = (role:UserRole): MenuItem[] => [
     label: "Messages",
     icon: <MessageSquare className="w-5 h-5" />,
     href: `/${role.toLocaleLowerCase()}/messages`,
-    badge: 5,
     roles: ["USER", "CHECKER", "ADMIN"]
   },
   {

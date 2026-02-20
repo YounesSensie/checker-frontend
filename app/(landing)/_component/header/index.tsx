@@ -28,9 +28,8 @@ const Header = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+      <header className={`fixed top-0 left-0  right-0 z-[100] transition-all duration-300 ${
         IsCheck ? "bg-gray-900/95 backdrop-blur-sm shadow-lg" : navbar ? "bg-gray-900/95 backdrop-blur-sm shadow-lg" : "bg-transparent"
-        
       }`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-4">
           <div className="flex justify-between items-center h-16 md:h-20">
@@ -48,7 +47,7 @@ const Header = () => {
                    quality={85}  // Slightly reduce for faster load
                   />
                 </div>
-                <span className="text-white text-xl font-bold">CheckerIst</span>
+                <span className="text-white text-lg md:text-xl font-bold">CheckerIst</span>
               </Link>
               
               {/* Desktop Menu */}
@@ -75,12 +74,12 @@ const Header = () => {
               </div>
 
               {/* Mobile Menu Icons */}
-              <div className="flex xl:hidden items-center space-x-4 ml-4">
+              <div className="flex xl:hidden items-center space-x-2 ml-3">
                 <Link
-                  href="/sign-in"
-                  className="text-white hover:text-gray-300 transition-colors duration-200"
+                  href="/become-checker"
+                  className="bg-white text-gray-900 px-2 py-1 rounded-lg text-[10px] text-center font-medium hover:bg-gray-100 transition-colors duration-200"
                 >
-                  <User className="h-6 w-6" />
+                  Become Early Checker
                 </Link>
                 <button
                   name='menu-mobile'
@@ -97,7 +96,7 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-[100]">
           <div 
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}

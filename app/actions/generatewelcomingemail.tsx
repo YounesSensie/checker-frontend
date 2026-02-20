@@ -43,7 +43,7 @@ export function generateWelcomeCheckerHTML(fullName: string): string {
               </p>
 
               <p style="margin:0 0 28px;color:#4a5568;font-size:15px;line-height:1.8;">
-                As a Checker, you are at the heart of what makes Checkerist valuable — ensuring travellers and renters find safe, quality, and honest accommodations. You now have the power to turn your eye for detail into a real income stream.
+                Checkerist.com is new, and you’re proudly among our first 1,000 Checkers. Enjoy special bonuses, priority profile placement in your region, and zero commission for your first year. Big opportunities are coming — we’ll be in touch soon with more details.
               </p>
 
               <!-- Value Props -->
@@ -73,9 +73,13 @@ export function generateWelcomeCheckerHTML(fullName: string): string {
 
                 <tr>
                   <td style="padding:16px;background:#f8f9ff;border-left:4px solid #38a169;border-radius:0 8px 8px 0;">
-                    <p style="margin:0;color:#1a1a2e;font-size:15px;font-weight:600;">🔒 Your Privacy & Security Are Our Priority</p>
+                    <p style="margin:0;color:#1a1a2e;font-size:15px;font-weight:600;">Turn Every Booking into More Revenue</p>
                     <p style="margin:6px 0 0;color:#718096;font-size:14px;line-height:1.7;">
-                      Your personal data, location, and activity are fully protected. We use industry-standard encryption and privacy controls so you can work with complete peace of mind. Your space is yours — safe and private.
+                      Turn Every Booking into More Revenue
+                      Earn extra income right after checking an accommodation.
+                      Upsell additional travel services to the same client — effortlessly.
+                      One request, multiple new revenue opportunities. 
+
                     </p>
                   </td>
                 </tr>
@@ -87,26 +91,17 @@ export function generateWelcomeCheckerHTML(fullName: string): string {
                 <tr>
                   <td style="padding:28px 32px;">
                     <p style="margin:0 0 8px;color:#e94560;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;">Next Step</p>
-                    <p style="margin:0 0 16px;color:#ffffff;font-size:17px;font-weight:600;">Complete your Checker profile</p>
+                    <p style="margin:0 0 16px;color:#ffffff;font-size:17px;font-weight:600;">Let’s Build This Together</p>
                     <p style="margin:0 0 20px;color:#a8b2c1;font-size:14px;line-height:1.7;">
-                      We've already set up everything you need to get started. Head to your dashboard to complete your Checker profile and start receiving client requests.
+                      Your feedback matters to us. Leave us a short message or share a thought that can help improve the process for everyone.
                     </p>
-                    <a href="${process.env.NEXT_PUBLIC_APP_URL}/checker/profile"
+                    <a href="mailto:contact@checkerist.com"
                        style="display:inline-block;background:#e94560;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;">
-                      Go to My Dashboard →
+                      Share Your Thoughts →
                     </a>
                   </td>
                 </tr>
               </table>
-
-              <p style="margin:0 0 8px;color:#4a5568;font-size:15px;line-height:1.8;">
-                If you ever have questions, run into issues, or simply want to share feedback, our support team is always here for you.
-              </p>
-
-              <p style="margin:0;color:#4a5568;font-size:15px;line-height:1.8;">
-                Once again, welcome to the Checkerist family. We're proud to have you with us. 🙌
-              </p>
-
             </td>
           </tr>
 

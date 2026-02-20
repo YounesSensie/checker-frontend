@@ -24,7 +24,7 @@ const BackgroundRippleEffect = ({
   };
 
   return (
-    <div className="absolute inset-0 h-full w-full overflow-hidden">
+    <div className="absolute inset-0  h-full w-full overflow-hidden">
       <style>{`
         @keyframes cell-ripple {
           0% { opacity: 0.2; transform: scale(0.95); }
@@ -55,7 +55,7 @@ const BackgroundRippleEffect = ({
           return (
             <div
               key={idx}
-              className={`relative border border-purple-400/20 bg-purple-500/5 opacity-30 transition-all duration-150 hover:opacity-60 hover:bg-purple-500/10 cursor-pointer ${
+              className={`relative  border border-purple-400/20 bg-purple-500/5 opacity-30 transition-all duration-150 hover:opacity-60 hover:bg-purple-500/10 cursor-pointer ${
                 clickedCell ? 'animate-cell-ripple' : ''
               }`}
               style={style as any}

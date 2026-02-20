@@ -54,7 +54,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-white mb-2">
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200">
         <Link href="/" className="flex items-center mr-8">
@@ -68,7 +68,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
                    priority
                   />
                 </div>
-                <span className="text-teal-500 text-xl font-bold">CheckerIst</span>
+                <span className="text-teal-500 text-lg font-bold">CheckerIst</span>
               </Link>
         <button
           onClick={onClose}

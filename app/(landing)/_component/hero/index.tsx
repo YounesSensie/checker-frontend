@@ -6,7 +6,7 @@ import MainFilter from './main-filtersearchbox'
 
 const MainHero = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full  mb-4">
       
       
       
@@ -26,10 +26,10 @@ const MainHero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 flex h-full items-center justify-center px-4 pt-16 md:pt-20">
+      <div className="relative z-10 flex h-full items-center justify-center   px-4 pt-20 md:pt-20">
         <div className="w-full max-w-6xl">
           <div className="flex justify-center">
-            <div className="w-full max-w-4xl">
+            <div className="w-full max-w-4xl mt-5 md:mt-0">
               <div className="text-center">
                 <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight">
                   Verify Your Accommodation Before You Travel
