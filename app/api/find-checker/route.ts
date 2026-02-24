@@ -121,6 +121,7 @@ export async function GET(request: NextRequest) {
           checker.professionalTitle ||
           checker.businessName ||
           "Checker",
+        professionalTitle: checker.professionalTitle,
         profileImage: checker.user?.avatar || "/placeholder.svg",
         rating: Number(checker.averageRating) || 0,
         reviews: checker.totalReviews ?? 0,

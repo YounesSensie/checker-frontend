@@ -5,6 +5,8 @@ import CheckerSearchBox from "./checker-search-box"
 import LoadingComponent from "./loading-compoent"
 import CheckerSidebar from "./checker-sidebar-new"
 import CheckerPagination from "./checker-pagination-new"
+import { useRouter } from "next/navigation"
+import { slugify } from "../../inspectors/[location]/[name]/_components/types-checker"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -13,6 +15,7 @@ interface Checker {
   id: number
   name: string
   profileImage: string
+  professionalTitle:string
   rating: number
   reviews: number
   experience: string
@@ -233,7 +236,10 @@ function CheckerCard({ checker }: { checker: Checker }) {
   const [liked, setLiked] = useState(false)
   const initials = checker.name?.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase() || "?"
   const isOnline = (checker.completedChecks ?? 0) > 100
-
+  const router = useRouter()
+  const HandelClick = ()=>{
+    router.push(`/inspectors/${slugify(checker.location.country)}/${slugify(checker.name)}?id=${checker.id}`)
+  }
   return (
     <div className="group relative flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg">
       <div className="flex items-start gap-3 mb-3">
@@ -259,7 +265,7 @@ function CheckerCard({ checker }: { checker: Checker }) {
             {checker.name}
           </h3>
           <p className="mt-0.5 truncate text-xs text-gray-500">
-            {checker.specialties?.[0] || "Accommodation Inspector"}
+            {checker.professionalTitle || "Accommodation Inspector"}
           </p>
           <span className={`mt-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold ${isOnline ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${isOnline ? "animate-pulse bg-green-500" : "bg-gray-400"}`} />
@@ -306,9 +312,9 @@ function CheckerCard({ checker }: { checker: Checker }) {
         <div className="text-right">
           <p className="flex items-center justify-end gap-0.5 text-[10px] text-gray-500">
             <IcoPin />
-            <span className="max-w-[110px] truncate">
+            <span className="max-w-[110px] ">
               {checker.location?.city && checker.location?.country
-                ? `${checker.location.city}, ${checker.location.country}`
+                ? `${checker.location.city} ${checker.location.country}`
                 : checker.coverageArea || "Worldwide"}
             </span>
           </p>
@@ -328,7 +334,8 @@ function CheckerCard({ checker }: { checker: Checker }) {
         </button>
         <button className="flex h-8 w-8 items-center justify-center rounded-full bg-green-50 text-green-600 hover:bg-green-100 transition-colors" title="Chat"><IcoChat /></button>
         <button className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors" title="Email"><IcoMail /></button>
-        <button className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all" title="View Profile"><IcoEye /></button>
+        <button
+        className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-400 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all" title="View Profile"><IcoEye /></button>
       </div>
     </div>
   )

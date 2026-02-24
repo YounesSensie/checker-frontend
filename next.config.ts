@@ -22,6 +22,12 @@ const nextConfig: NextConfig = {
         port: '',
         search: '',
       },
+      {
+        protocol: 'https',
+        hostname: '2xzizguscgzomi2t.public.blob.vercel-storage.com',
+        port:'',
+        search: '',
+      }
     ],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],

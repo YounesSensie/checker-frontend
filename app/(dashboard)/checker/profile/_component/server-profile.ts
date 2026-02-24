@@ -16,6 +16,7 @@ interface ProfileUpdateData {
   basePrice?: number
   professionalTitle?: string
   description?: string
+  specialties?: { category: string; subcategory?: string; level: string }[]
 }
 
 interface UploadAvatarResult {
@@ -92,17 +93,19 @@ export async function uploadCheckerAvatar(
 /**
  * Calculate profile completion percentage
  */
-function calculateProfileCompletion(user: any, checkerProfile: any): number {
-  let percentage = 15 // Base for registration
-  
-  if (user.avatar) percentage += 15
-  if (user.languages && user.languages.length > 0) percentage += 15
-  if (checkerProfile.businessCountry) percentage += 15
-  if (checkerProfile.coverageAreas && checkerProfile.coverageAreas.length > 0) percentage += 15
+function calculateProfileCompletion(user: any, checkerProfile: any, specialties?: any[]): number {
+  let percentage = 10 // Base for registration
+
+  if (user.avatar) percentage += 10
+  if (user.languages?.length > 0) percentage += 15
+  if (checkerProfile.businessCountry) percentage += 10
+  if (checkerProfile.coverageAreas?.length > 0) percentage += 10
   if (checkerProfile.basePrice > 0) percentage += 15
-  if (checkerProfile.professionalTitle) percentage += 5
-  if (checkerProfile.description) percentage += 5
-  
+  if (checkerProfile.professionalTitle) percentage += 10
+  if (checkerProfile.description) percentage += 10
+  // ✅ Specialties now count for 10%
+  if (specialties && specialties.length > 0) percentage += 10
+
   return Math.min(percentage, 100)
 }
 
@@ -121,7 +124,9 @@ export async function updateCheckerProfile(
 
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
-      include: { checkerProfile: true }
+      include: { checkerProfile: {
+        include: { specialties: true }
+      } }
     })
 
     if (!user || user.role !== 'CHECKER') {
@@ -172,6 +177,25 @@ export async function updateCheckerProfile(
     if (data.description !== undefined) {
       updateData.description = data.description
     }
+    // ✅ Save specialties properly
+    let savedSpecialties = user.checkerProfile.specialties ?? []
+    if (data.specialties !== undefined) {
+      await prisma.checkerSpecialty.deleteMany({
+        where: { checkerId: user.checkerProfile.id }
+      })
+
+      if (data.specialties.length > 0) {
+        await prisma.checkerSpecialty.createMany({
+          data: data.specialties.map(s => ({
+            checkerId: user.checkerProfile!.id,
+            category: s.category,
+            subcategory: s.subcategory ?? null,
+            level: s.level || "expert"
+          }))
+        })
+        savedSpecialties = data.specialties as any
+      }
+    }
 
     await prisma.checkerProfile.update({
       where: { id: user.checkerProfile.id },
@@ -183,9 +207,11 @@ export async function updateCheckerProfile(
       include: { checkerProfile: true }
     })
 
+    // ✅ Pass specialties into completion calc
     const completionPercentage = calculateProfileCompletion(
       updatedUser,
-      updatedUser!.checkerProfile
+      updatedUser!.checkerProfile,
+      savedSpecialties
     )
 
     if (completionPercentage === 100 && user.checkerProfile.status === 'PENDING') {
@@ -232,7 +258,9 @@ export async function getCheckerProfileCompletion(): Promise<{
 
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
-      include: { checkerProfile: true }
+      include: { checkerProfile:{
+        include: { specialties: true }
+      } }
     })
 
     if (!user || user.role !== 'CHECKER') {
@@ -243,7 +271,11 @@ export async function getCheckerProfileCompletion(): Promise<{
       return { success: false, error: "Checker profile not found" }
     }
 
-    const completionPercentage = calculateProfileCompletion(user, user.checkerProfile)
+    const completionPercentage = calculateProfileCompletion(
+      user,
+      user.checkerProfile,
+      user.checkerProfile.specialties   // ✅ pass them in
+    )
 
     return {
       success: true,
@@ -263,6 +295,7 @@ export async function getCheckerProfileCompletion(): Promise<{
           basePrice: Number(user.checkerProfile.basePrice),
           businessCountry: user.checkerProfile.businessCountry,
           // ✅ Return both so the profile form can show the saved primary city
+          specialties: user.checkerProfile.specialties,
           businessCity: user.checkerProfile.businessCity,
           coverageAreas: user.checkerProfile.coverageAreas,
           status: user.checkerProfile.status

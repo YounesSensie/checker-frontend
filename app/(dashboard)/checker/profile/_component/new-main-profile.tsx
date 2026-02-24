@@ -33,13 +33,147 @@ interface ProfileData {
     businessCountry: string | null
     coverageAreas: string[]
     status: string
+    specialties: { category: string; subcategory?: string; level: string }[]
   }
   completionPercentage: number
   isComplete: boolean
 }
+const travelCategories = {
+  "Transportation & Mobility": [
+    "Flights",
+    "Cheap flights",
+    "Car rental",
+    "Airport transfers",
+    "Airport parking",
+    "Train travel",
+    "Road trip",
+    "Cruise",
+    "River cruise",
+    "Yacht charter"
+  ],
 
+  "Accommodation & Rentals": [
+    "Hotels",
+    "Airbnb",
+    "Hostels",
+    "Resorts",
+    "All-inclusive",
+    "Family vacation stays",
+    "Luxury travel stays",
+    "Beach vacation rentals",
+    "Farm stay"
+  ],
+
+  "Documentation & Admin": [
+    "Passport",
+    "Passport renewal",
+    "Visa",
+    "e-Visa",
+    "Visa on arrival",
+    "TSA Precheck",
+    "Global Entry",
+    "Customs",
+    "Immigration",
+    "Travel documents"
+  ],
+
+  "Travel Insurance & Safety": [
+    "Travel insurance",
+    "Medical insurance",
+    "Cancellation insurance",
+    "Travel safety",
+    "Travel vaccines",
+    "Travel clinics",
+    "Travel nursing",
+    "Altitude sickness",
+    "Jet lag help"
+  ],
+
+  "Experiences & Activities": [
+    "Things to do",
+    "Tours",
+    "Food tour",
+    "Wine tasting",
+    "Ghost tour",
+    "Cooking class",
+    "Adventure travel",
+    "Safari",
+    "Honeymoon",
+    "Tourist attractions",
+    "Stargazing",
+    "Cycling tour",
+    "Museum tour",
+    "Art tour"
+  ],
+
+  "Gear & Travel Essentials": [
+    "Luggage",
+    "Backpacks",
+    "Travel accessories",
+    "Power bank",
+    "Portable charger",
+    "Packing cubes",
+    "Travel pillow",
+    "Travel backpack",
+    "Travel adapters",
+    "Travel duffel bag",
+    "Noise-cancelling headphones"
+  ],
+
+  "Booking & Planning": [
+    "Travel planning",
+    "Trip itineraries",
+    "Vacation packages",
+    "Last minute deals",
+    "Travel agents",
+    "Travel blogs",
+    "Travel apps",
+    "Travel groups",
+    "Travel deals"
+  ],
+
+  "Wellness & Lifestyle": [
+    "Wellness retreat",
+    "Yoga retreat",
+    "Spa day",
+    "Spa vacation",
+    "Meditation retreat",
+    "Detox vacation",
+    "Slow travel",
+    "Mindful travel"
+  ],
+
+  "Finance & Rewards": [
+    "Travel credit cards",
+    "Airline miles",
+    "Hotel points",
+    "Currency exchange",
+    "Budget travel",
+    "Travel hacking",
+    "Travel rewards",
+    "Travel money"
+  ],
+
+  "Special-Interest Travel": [
+    "Digital nomad",
+    "Study abroad",
+    "Working holiday",
+    "Ecotourism",
+    "Sustainable travel",
+    "Volunteering abroad",
+    "Cultural exchange",
+    "Photography tour",
+    "Space tourism",
+    "Sports tourism"
+  ]
+}
 export default function CheckerProfileCompletionPage() {
   const [profileData, setProfileData] = useState<ProfileData | null>(null)
+  const [specialties, setSpecialties] = useState<
+  { category: string; subcategory?: string; level: string }[]>([])
+
+const [certifications, setCertifications] = useState<
+  { name: string; issuer: string; issueDate: string; documentUrl?: string }[]>([])
   const [formData, setFormData] = useState({
     languages: [] as string[],
     businessCountry: '',
@@ -67,8 +201,17 @@ export default function CheckerProfileCompletionPage() {
         coverageAreas: profileData.checkerProfile.coverageAreas,
         basePrice: profileData.checkerProfile.basePrice,
         professionalTitle: profileData.checkerProfile.professionalTitle || '',
-        description: profileData.checkerProfile.description || ''
+        description: profileData.checkerProfile.description || '',
       })
+       if (profileData.checkerProfile.specialties?.length > 0) {
+      setSpecialties(
+        profileData.checkerProfile.specialties.map((s: any) => ({
+          category: s.category,
+          subcategory: s.subcategory ?? '',
+          level: s.level ?? 'expert'
+        }))
+      )
+    }
     }
   }, [profileData])
 
@@ -148,7 +291,8 @@ export default function CheckerProfileCompletionPage() {
         businessCity: formData.coverageAreas[0] ?? '',
         basePrice: formData.basePrice,
         professionalTitle: formData.professionalTitle,
-        description: formData.description
+        description: formData.description,
+        specialties: specialties
       })
       if (result.success) {
         await loadProfileData()
@@ -358,7 +502,7 @@ export default function CheckerProfileCompletionPage() {
                   value={formData.professionalTitle}
                   onChange={e => { setFormData(prev => ({ ...prev, professionalTitle: e.target.value })); setHasChanges(true) }}
                   disabled={saveStatus === 'saving'}
-                  placeholder="e.g. Hotel Inspector with an eye for detail"
+                  placeholder=" Your tagline or professional title"
                   className="w-full rounded-xl border-2 border-gray-200 bg-white/50 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#2b4bee] focus:outline-none transition-shadow hover:shadow-md disabled:opacity-50"
                 />
               </div>
@@ -498,7 +642,145 @@ export default function CheckerProfileCompletionPage() {
               </div>
             </div>
           </GlassCard>
+         
+          {/* ── Specialties ── */}
+          {/* ── Specialties ── */}
+<GlassCard
+  accentColor="#6366f1"
+  accentBg="from-indigo-100 to-indigo-50"
+  icon={<Shield className="w-7 h-7 text-indigo-600" />}
+  title="Specialties"
+>
+  <p className="text-sm text-gray-400 mb-4">
+    Select what types of accommodations you specialize in.
+  </p>
 
+  <div className="space-y-4">
+    {specialties.map((s, index) => (
+      <div key={index} className="flex gap-2 flex-wrap items-start">
+
+        {/* Category */}
+        <select
+          value={s.category}
+          onChange={e => {
+            const updated = [...specialties]
+            updated[index].category = e.target.value
+            updated[index].subcategory = ""
+            setSpecialties(updated)
+            setHasChanges(true)
+          }}
+          className="rounded-lg border px-3 py-2"
+        >
+          <option value="">Category</option>
+          {Object.keys(travelCategories).map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
+        </select>
+
+        {/* Subcategory multi-select area */}
+        <div className="flex flex-col gap-2 flex-1 min-w-[220px]">
+
+          {/* Subcategory dropdown */}
+          {s.category && (
+            <select
+              value=""
+              onChange={e => {
+                const val = e.target.value
+                if (!val) return
+                const updated = [...specialties]
+                const current: string[] = updated[index].subcategory
+                  ? updated[index].subcategory.split("||")
+                  : []
+                if (!current.includes(val)) {
+                  current.push(val)
+                  updated[index].subcategory = current.join("||")
+                  setSpecialties(updated)
+                  setHasChanges(true)
+                }
+              }}
+              className="rounded-lg border px-3 py-2 w-full"
+            >
+              <option value="">+ Add Subcategory</option>
+              {travelCategories[s.category as keyof typeof travelCategories]?.map(sub => {
+                const selected = s.subcategory?.split("||") ?? []
+                return (
+                  <option
+                    key={sub}
+                    value={sub}
+                    disabled={selected.includes(sub)}
+                  >
+                    {selected.includes(sub) ? `✓ ${sub}` : sub}
+                  </option>
+                )
+              })}
+            </select>
+          )}
+
+          {/* Selected subcategory tags */}
+          {s.subcategory && (
+            <div className="flex flex-wrap gap-1.5">
+              {s.subcategory.split("||").map((sub, subIdx) => {
+                const tagColors = [
+                  "bg-indigo-100 text-indigo-700 border-indigo-200",
+                  "bg-violet-100 text-violet-700 border-violet-200",
+                  "bg-purple-100 text-purple-700 border-purple-200",
+                  "bg-blue-100 text-blue-700 border-blue-200",
+                  "bg-sky-100 text-sky-700 border-sky-200",
+                  "bg-teal-100 text-teal-700 border-teal-200",
+                  "bg-emerald-100 text-emerald-700 border-emerald-200",
+                  "bg-pink-100 text-pink-700 border-pink-200",
+                ]
+                const color = tagColors[subIdx % tagColors.length]
+                return (
+                  <span
+                    key={sub}
+                    className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border ${color} transition-all`}
+                  >
+                    {sub}
+                    <button
+                      onClick={() => {
+                        const updated = [...specialties]
+                        const current = updated[index].subcategory?.split("||").filter(v => v !== sub)
+                        updated[index].subcategory = current?.join("||")
+                        setSpecialties(updated)
+                        setHasChanges(true)
+                      }}
+                      className="ml-0.5 hover:opacity-60 transition-opacity font-bold text-sm leading-none"
+                      aria-label={`Remove ${sub}`}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )
+              })}
+            </div>
+          )}
+        </div>
+
+        <button
+          onClick={() =>
+            setSpecialties(prev => prev.filter((_, i) => i !== index))
+          }
+          className="text-red-500 font-bold"
+        >
+          Remove
+        </button>
+      </div>
+    ))}
+
+    <button
+      onClick={() =>
+        setSpecialties(prev => [
+          ...prev,
+          { category: '', subcategory: '', level: '' }
+        ])
+      }
+      className="px-4 py-2 bg-indigo-600 text-white rounded-lg"
+    >
+      + Add Specialty
+    </button>
+  </div>
+</GlassCard>
           {/* ── Action Buttons ── */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-[#2b4bee]/10">
             <button
@@ -510,7 +792,6 @@ export default function CheckerProfileCompletionPage() {
               {saveStatus === 'saving' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
               {saveStatus === 'saving' ? 'Saving...' : saveStatus === 'saved' ? 'Saved!' : 'Save Changes'}
             </button>
-
             <button
               onClick={() => { if (isProfileComplete) router.push('/checker') }}
               disabled={!isProfileComplete || hasChanges}

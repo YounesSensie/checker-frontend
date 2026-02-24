@@ -12,7 +12,8 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname()
-  const IsCheck = (pathname.startsWith('/check') || pathname.startsWith('/become-checker') || pathname.startsWith('/blog') || pathname.startsWith('/safety') ) && true
+  const IsCheck = (pathname.startsWith('/check') || pathname.startsWith('/become-checker')||
+  pathname.startsWith('/inspectors') || pathname.startsWith('/blog') || pathname.startsWith('/safety') ) && true
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
