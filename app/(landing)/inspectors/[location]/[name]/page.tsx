@@ -12,13 +12,13 @@ import { CheckerProfile, slugify, unslugify } from "./_components/types-checker"
 import { SpecialtiesSection } from "./_components/specialites-section";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     location: string; // "paris-france"
     name: string;     // "john-doe"
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     id?: string;      // "clx1234abc"
-  };
+  }>;
 }
 function generateCheckerSEO(checker: CheckerProfile, locationLabel: string) {
   const fullName = `${checker.user.firstName} ${checker.user.lastName}`;
@@ -45,6 +45,7 @@ function generateCheckerSEO(checker: CheckerProfile, locationLabel: string) {
 
   return { fullName, title, description, subCategories: activeSubs };
 }
+
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const { id } = await searchParams
   const { location, name } = await params;
