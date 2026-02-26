@@ -171,7 +171,7 @@ export default function PopularCheckers({ checkers }: PopularCheckersProps) {
   };
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
+    <section id="checkers" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
       {/* ── Elegant background elements ── */}
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 right-1/3 w-96 h-96 rounded-full bg-emerald-200/20 blur-3xl" />
