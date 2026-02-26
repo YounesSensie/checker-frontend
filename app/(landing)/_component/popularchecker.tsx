@@ -38,10 +38,10 @@ interface PopularCheckersProps {
 
 function getBadge(idx: number) {
   const badges = [
-    { label: "EXPERT", color: "from-blue-500 to-cyan-500"},
-    { label: "EXPERT", color: "from-blue-500 to-cyan-500" },
-    { label: "EXPERT", color: "from-blue-500 to-cyan-500" },
-    { label: "EXPERT", color: "from-blue-500 to-cyan-500" },
+    { label: "EXPERT", color: "from-teal-600 to-teal-300"},
+    { label: "EXPERT", color: "from-teal-600 to-teal-300" },
+    { label: "EXPERT", color: "from-teal-600 to-teal-300" },
+    { label: "EXPERT", color: "from-teal-600 to-teal-300" },
   ];
   return badges[idx % badges.length];
 }
@@ -139,7 +139,7 @@ function CheckerCard({
           {checker.description}
         </p>
 
-        <button className="mt-2 w-full rounded-lg bg-gradient-to-r from-blue-600 to-sky-300 py-2 text-xs font-bold text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-1">
+        <button className="mt-2 w-full rounded-lg bg-gradient-to-r from-teal-600 to-teal-300 py-2 text-xs font-bold text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-1">
           View Profile
           <ArrowUpRight className="w-3 h-3" />
         </button>
@@ -183,23 +183,17 @@ export default function PopularCheckers({ checkers }: PopularCheckersProps) {
         {/* ── Header ── */}
         <div className="mb-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8">
           <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2">
-              <BadgeCheck className="w-4 h-4 text-emerald-600" />
-              <span className="text-xs font-bold text-emerald-700 tracking-wide uppercase">
-                Verified Experts
-              </span>
-            </div>
+          
 
             <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight mb-4">
               Meet Our{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-400">
+                <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-teal-300">
                   Premium
                 </span>
                 <span
                   aria-hidden
-                  className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-blue-600 to-sky-400"
+                  className="absolute -bottom-2 left-0 right-0 h-1 rounded-full bg-gradient-to-r from-teal-600 to-teal-300"
                 />
               </span>{" "}
               Checkers

@@ -45,7 +45,7 @@ export function TruthSlider({ filteredImage, truthImage, className }: TruthSlide
   return (
     <div
       ref={containerRef}
-      className={`relative aspect-4/3 overflow-hidden rounded-3xl cursor-ew-resize select-none shadow-2xl ${className}
+      className={`relative aspect-4/5 overflow-hidden rounded-3xl cursor-ew-resize select-none shadow-2xl ${className}
       `}
       onMouseMove={onMouseMove}
       onMouseDown={onMouseDown}
@@ -76,7 +76,7 @@ export function TruthSlider({ filteredImage, truthImage, className }: TruthSlide
 
         {/* Truth Label */}
         <div className="absolute top-6 left-6 z-20 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2 border border-white/20">
-          <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center">
+          <div className="w-4 h-4 rounded-full bg-teal-500 flex items-center justify-center">
             <Eye className="w-2.5 h-2.5 text-white" />
           </div>
           <span className="text-xs font-semibold text-slate-800">Truth Revealed</span>
@@ -89,7 +89,7 @@ export function TruthSlider({ filteredImage, truthImage, className }: TruthSlide
         className="absolute top-0 bottom-0 w-1 bg-white z-30 -translate-x-1/2"
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-indigo-500/20">
-          <div className="w-7 h-7 bg-indigo-600 rounded-full flex items-center justify-center text-white">
+          <div className="w-7 h-7 bg-teal-600 rounded-full flex items-center justify-center text-white">
             <Eye className="w-4 h-4" />
           </div>
         </div>
