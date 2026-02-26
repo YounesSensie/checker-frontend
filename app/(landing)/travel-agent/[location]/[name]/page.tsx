@@ -3,10 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getCheckerProfile } from "./_components/server-actions";
 import { ProfileHeader } from "./_components/profile-header";
-import { StatsDashboard } from "./_components/states-dashboard";
 import { AboutSection } from "./_components/Aboutsection";
 import { PricingCoverage } from "./_components/pricing-covrage";
-import { ReviewsSection } from "./_components/review-section";
 import { MobileCTA } from "./_components/mobilecta";
 import { CheckerProfile, slugify, unslugify } from "./_components/types-checker";
 import { SpecialtiesSection } from "./_components/specialites-section";
@@ -73,7 +71,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     },
     alternates: {
       // Canonical always points to the ?id= version for deduplication
-      canonical: `/inspectors/${location}/${name}${id ? `?id=${id}` : ""}`,
+      canonical: `/travel-agent/${location}/${name}${id ? `?id=${id}` : ""}`,
     },
     // JSON-LD structured data will be added via <script> below
   };

@@ -16,7 +16,7 @@ const Header = () => {
   const alwaysSolid =
     pathname.startsWith("/check") ||
     pathname.startsWith("/become-checker") ||
-    pathname.startsWith("/inspectors") ||
+    pathname.startsWith("/travel-agent") ||
     pathname.startsWith("/blog") ||
     pathname.startsWith("/safety") ||
     pathname.startsWith("/sign-in");

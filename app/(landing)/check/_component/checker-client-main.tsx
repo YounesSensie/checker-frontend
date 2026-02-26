@@ -6,7 +6,7 @@ import LoadingComponent from "./loading-compoent"
 import CheckerSidebar from "./checker-sidebar-new"
 import CheckerPagination from "./checker-pagination-new"
 import { useRouter } from "next/navigation"
-import { slugify } from "../../inspectors/[location]/[name]/_components/types-checker"
+import { slugify } from "../../travel-agent/[location]/[name]/_components/types-checker"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -238,7 +238,7 @@ function CheckerCard({ checker }: { checker: Checker }) {
   const isOnline = (checker.completedChecks ?? 0) > 100
   const router = useRouter()
   const HandelClick = ()=>{
-    router.push(`/inspectors/${slugify(checker.location.country)}/${slugify(checker.name)}?id=${checker.id}`)
+    router.push(`/travel-agent/${slugify(checker.location.country)}/${slugify(checker.name)}?id=${checker.id}`)
   }
   return (
     <div className="group relative flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg">

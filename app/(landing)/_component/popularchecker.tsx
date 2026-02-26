@@ -10,6 +10,8 @@ import {
   Compass,
   ArrowUpRight,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { slugify } from "../travel-agent/[location]/[name]/_components/types-checker";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -71,7 +73,11 @@ function CheckerCard({
     .filter(Boolean)
     .join(", ");
   const initials = `${checker.user.firstName[0]}${checker.user.lastName[0]}`.toUpperCase();
-
+  const router = useRouter()
+   const HandelClick = ()=>{
+      if (!checker.businessCountry) return;
+      router.push(`/travel-agent/${slugify(checker.businessCountry)}/${slugify(checker.user.firstName + "-" + checker.user.lastName)}?id=${checker.id}`)
+    }
   return (
     <div className="group relative flex flex-col rounded-2xl bg-white p-5 shadow-lg ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl cursor-pointer overflow-hidden">
       {/* Elegant gradient background on hover */}
@@ -139,7 +145,7 @@ function CheckerCard({
           {checker.description}
         </p>
 
-        <button className="mt-2 w-full rounded-lg bg-gradient-to-r from-teal-600 to-teal-300 py-2 text-xs font-bold text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-1">
+        <button onClick={HandelClick} className="mt-2 w-full rounded-lg bg-gradient-to-r from-teal-600 to-teal-300 py-2 text-xs font-bold text-white transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/25 active:scale-95 flex items-center justify-center gap-1">
           View Profile
           <ArrowUpRight className="w-3 h-3" />
         </button>
