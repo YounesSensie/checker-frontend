@@ -120,7 +120,7 @@ export const blogPosts: BlogPost[] = [
   // ── Add more posts here following the same structure ──
    {
     slug: "bali-driver-travel-sales-lesson",
-    title: "From a Bali Driver to a Travel Specialist ",
+    title: "From a Bali Driver to a Travel Specialist",
     excerpt:
       "In 2023, I traveled to Bali with my wife. We organized everything ourselves — flights, accommodations, activities. The trip was amazing. Bali is always exciting. But one experience marked me deeply… and I only understood its real meaning after returning to Tunisia.",
     coverImage:

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllBlogSlugs, getBlogPostBySlug } from "./_components/blogpost";
 import BlogPostContent from "./_components/blogpostcontent";
+import { CountActions } from "./_components/count-actions";
 
 
 /* ─── Static params for SSG ────────────────────────────── */
@@ -67,7 +68,7 @@ export default async function BlogPostPage({
   if (!post) {
     notFound();
   }
-
+ const res = await CountActions(post.slug)
   // BlogPostContent is a Client Component — we pass the data down
   return <BlogPostContent post={post} />;
 }
