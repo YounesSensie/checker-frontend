@@ -30,7 +30,6 @@ export default function robots(): MetadataRoute.Robots {
           '/private',
         ],
       },
-
       // ChatGPT real-time browsing
       {
         userAgent: 'ChatGPT-User',

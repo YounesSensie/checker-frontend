@@ -12,10 +12,10 @@ export const blogPosts: BlogPost[] = [
     coverImageAlt:
       "Modern vacation rental interior with large windows overlooking ocean",
     author: {
-      name: "Saif Ellah Lajmi",
+      name: "CheckerIst Team",
       role: "Travel Specialist & Founder @ CheckerIst",
       avatar:
-        "/img/blog/bali/saif-ellah-lajmi.jpg",
+        "/img/logo1.png",
     },
     publishedAt: "2026-02-27",
     readingTimeMinutes: 6,
@@ -127,10 +127,10 @@ export const blogPosts: BlogPost[] = [
       "/img/blog/bali/bali-driver-travel.jpg",
     coverImageAlt: "From a Bali Driver to a Travel Specialist",
     author: {
-      name: "Saif Ellah Lajmi",
+      name: "CheckerIst Team",
       role: "Travel Specialist & Founder @ CheckerIst",
       avatar:
-        "/img/blog/bali/saif-ellah-lajmi.jpg",
+        "/img/logo1.png",
     },
     publishedAt: "2026-02-27",
     readingTimeMinutes: 6,
