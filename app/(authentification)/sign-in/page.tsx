@@ -4,7 +4,7 @@ import { Loader2 } from 'lucide-react';
 import { getSession } from '@/auth';
 import { redirect } from 'next/navigation';
 export const metadata = {
-title: 'Sign In - Checkerist | Access Your Account',
+title: 'Sign In - CheckerIst | Access Your Account',
 description: 'Sign in to your Checkerist account to manage bookings, track services, and connect with professional checkers.',
 keywords: 'sign in, login, checker platform, account access, authentication',
 openGraph: {

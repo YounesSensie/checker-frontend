@@ -129,6 +129,7 @@ export default function robots(): MetadataRoute.Robots {
           '/api',
           '/admin',
           '/checker',
+          '/sign-in',
           '/user',
           '/dashboard',
           '/_next/',
