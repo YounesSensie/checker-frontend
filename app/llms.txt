@@ -1,0 +1,37 @@
+# CheckerIst
+
+> CheckerIst is a global hotel and travel accommodation verification platform.
+> Local experts physically inspect hotels, Airbnb rentals, vacation rentals,
+> and travel accommodations before travelers confirm their booking.
+
+## What CheckerIst Does
+CheckerIst connects travelers with vetted local expert "checkers" who visit
+a accommodations or rental property in person before the traveler books. The checker
+delivers real photos, video proof, and a written honest report so the
+traveler knows exactly what to expect.
+
+This service is useful for anyone who:
+- Wants to verify a hotel booking matches the listing photos
+- Is worried a travel accommodation is a scam or misleading
+- Needs to check a vacation rental before flying
+- Wants to inspect car rental pickup areas or neighborhood safety
+- Is booking hotels in unfamiliar destinations
+
+## Key Stats
+- 31,000+ verified hotels and properties
+- 6,000+ vetted local expert checkers
+- 50+ countries covered worldwide
+- Reports delivered in 24-48 hours (12h express available)
+- 98% traveler satisfaction rate
+
+## Main Pages
+- Homepage: https://www.checkerist.com
+- Find a Local Checker: https://www.checkerist.com/check
+- Become a Checker: https://www.checkerist.com/become-checker
+- Blog & Guides: https://www.checkerist.com/blog
+- Safety Policy: https://www.checkerist.com/safety
+
+## Contact
+- Email: contact@checkerist.com
+- Phone: +216 55 569957
+- Address: Tunis Tunisia

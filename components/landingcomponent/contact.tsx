@@ -123,13 +123,15 @@ export default function Contact() {
               </p>
               <div className="space-y-6">
                 {[
-                  { icon: Mail, text: "contact@checkerist.com" , href:"#" },
-                  { icon: FaLinkedin, text: "checkerist" , href:"#" },
+                  { icon: Mail, text: "contact@checkerist.com" , href: "mailto:contact@checkerist.com",ariaLabel: "Send an email to CheckerIst", },
+                  { icon: FaLinkedin, text: "checkerist" ,  href: "https://www.linkedin.com/in/reinventing-travel-trust-founder-checkerist-4559613b1/",
+                                                                // ← same fix: unique descriptive label per link
+                                                                ariaLabel: "Visit CheckerIst on LinkedIn", },
                   
-                ].map(({ icon: Icon, text, href }) => (
+                ].map(({ icon: Icon, text, href, ariaLabel }) => (
                   <div key={text} className="flex items-center gap-4">
-                    <Link href={href} className="w-10 h-10 bg-white/20 rounded-full cursor-pointer flex items-center justify-center flex-shrink-0">
-                      <Icon  className="w-5 h-5"  />
+                    <Link href={href} target="_blank" aria-label={ariaLabel} className="w-10 h-10 bg-white/20 rounded-full cursor-pointer flex items-center justify-center flex-shrink-0">
+                      <Icon  className="w-5 h-5" aria-hidden="true" />
                     </Link>
                     <span className="font-medium">{text}</span>
                   </div>

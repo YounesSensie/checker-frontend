@@ -17,6 +17,124 @@ export default function robots(): MetadataRoute.Robots {
           '/private',
         ],
       },
+      {
+        userAgent: 'GPTBot',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // ChatGPT real-time browsing
+      {
+        userAgent: 'ChatGPT-User',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Perplexity AI
+      {
+        userAgent: 'PerplexityBot',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Anthropic Claude
+      {
+        userAgent: 'ClaudeBot',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Google Gemini AI training
+      {
+        userAgent: 'Google-Extended',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Meta AI (Llama)
+      {
+        userAgent: 'Meta-ExternalAgent',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Apple Applebot (Siri suggestions)
+      {
+        userAgent: 'Applebot',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
+
+      // Amazon Alexa / Audible
+      {
+        userAgent: 'Amazonbot',
+        allow: ['/'],
+        disallow: [
+          '/api',
+          '/admin',
+          '/checker',
+          '/user',
+          '/dashboard',
+          '/_next/',
+          '/private',
+        ],
+      },
       
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

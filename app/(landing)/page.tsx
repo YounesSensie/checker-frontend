@@ -98,6 +98,7 @@ import About from "@/components/landingcomponent/about";
 import FAQ from "@/components/landingcomponent/faq";
 import Contact from "@/components/landingcomponent/contact";
 import Footer from "@/components/landingcomponent/footer";
+import JsonLd from "@/components/JsonLd";
 
 
 
@@ -258,6 +259,7 @@ export  default async function Page() {
   }))
   return (
     <main className="min-h-screen bg-[#f8fafc]">
+      <JsonLd />
       <Hero />
       <Features />
       <HowItWorks />

@@ -1,6 +1,7 @@
 "use client";
 
 import { MapPin, FileText, UserCheck, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 const steps = [
   {
@@ -93,12 +94,12 @@ export default function HowItWorks() {
         <div className="mt-16 bg-gradient-to-r from-[#2cc2a5] to-[#1f8a75] rounded-3xl p-10 text-center text-white">
           <h3 className="text-2xl font-bold mb-3">Ready to verify your next stay?</h3>
           <p className="text-white/80 mb-6">Join thousands of travellers who book with confidence.</p>
-          <a
-            href="#"
+          <Link
+            href="/check"
             className="inline-flex items-center px-8 py-3.5 bg-white text-[#2cc2a5] font-bold rounded-full hover:bg-gray-50 transition-all shadow-lg"
           >
             Start Your First Check
-          </a>
+          </Link>
         </div>
       </div>
     </section>

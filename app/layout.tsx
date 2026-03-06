@@ -10,11 +10,13 @@ const inter = Inter({
   variable: '--font-inter',
 });
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.checkerist.com"),
   title: "Verify Accommodation & Travel Bookings Before You Arrive | CheckerIst",
   // ── Meta description — natural, action-driven, ≤160 chars, includes top keywords
   description:
     "CheckerIst sends local experts to inspect your hotel, Airbnb, or rental before you travel. Secure your booking, verify real room photos, and make every flight & trip 100% worth it.",
-  icons:{
+  
+    icons:{
     icon: [
       {
         url:"/img/logo1.png",
@@ -22,7 +24,32 @@ export const metadata: Metadata = {
         sizes: "32x32" 
       }
     ]
-  }
+  },
+
+  applicationName: "CheckerIst",
+  authors: [{ name: "CheckerIst Inc.", url: "https://www.checkerist.com" }],
+  creator: "CheckerIst Inc.",
+  publisher: "CheckerIst Inc.",
+  category: "Travel & Accommodation Verification",
+
+  // ── Open Graph defaults ──
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "CheckerIst",
+    images: [
+      {
+        url: "/img/santorini.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CheckerIst — Verify your hotel and travel accommodation before booking",
+      },
+    ],
+  },
+
+  
+
+
 };
 
 export default function RootLayout({
@@ -50,7 +77,7 @@ export default function RootLayout({
           }}
         />
       <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Checkerist" />
+        <meta property="og:site_name" content="CheckerIst" />
         <meta property="og:title" content="Verify Before You Travel — CheckerIst"/>
 
         <meta property="og:description" content="Get properties verified by trusted local inspectors. Avoid rental scams — book a verification before you arrive."/>
@@ -70,8 +97,8 @@ export default function RootLayout({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "Checkerist",
-                "alternateName": ["Checkerist", "Checkerist"],
+                "name": "CheckerIst",
+                "alternateName": ["CheckerIst"],
                 "url": "https://www.checkerist.com/",
                 
               }),
