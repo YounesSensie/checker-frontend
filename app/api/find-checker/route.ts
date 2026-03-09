@@ -46,8 +46,7 @@ export async function GET(request: NextRequest) {
     const skip = (page - 1) * limit
 
     // ── Build WHERE clause ────────────────────────────────────────────────────
-    const where: any = {
-      status: "APPROVED",          // only show approved checkers
+    const where: any = {         // only show approved checkers
       basePrice:     { gte: priceMin, lte: priceMax },
       averageRating: { gte: minRating },
     }
