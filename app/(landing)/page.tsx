@@ -74,7 +74,7 @@ const HomePage = async() => {
       
       <FeaturesComp/>
      
-       <PopularCheckers checkers={serializedCheckers} />
+       //<PopularCheckers checkers={serializedCheckers} />
 
       <AddBanner />
       <FeaturesSection/>
@@ -99,9 +99,6 @@ import FAQ from "@/components/landingcomponent/faq";
 import Contact from "@/components/landingcomponent/contact";
 import Footer from "@/components/landingcomponent/footer";
 import JsonLd from "@/components/JsonLd";
-
-
-
 export const metadata: Metadata = {
   // ── Primary title — brand + main keyword + value prop (≤60 chars recommended)
   title: "Verify Accommodation & Travel Bookings Before You Arrive | CheckerIst",
