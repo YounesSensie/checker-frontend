@@ -16,7 +16,7 @@ import {
   Linkedin,
   Twitter,
 } from "lucide-react";
-import { BlogPost, ContentBlock } from "./blog";
+import { BlogPost, CallToActionBlock, ContentBlock } from "./blog";
 import Footer from "@/components/landingcomponent/footer";
 
 
@@ -83,7 +83,21 @@ function RenderBlock({ block }: { block: ContentBlock }) {
           </p>
         </div>
       );
-
+    case "callToAction": {
+        return (
+          <p className="...">
+            {block.text}{" "}
+            <Link
+              href={block.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-teal-500 underline underline-offset-2 hover:text-teal-400 transition-colors"
+            >
+              {block.linkLabel}
+            </Link>
+          </p>
+        );
+      }
     case "bulletList":
       return (
         <ul className="list-none space-y-3 mb-8 pl-0">

@@ -1,16 +1,23 @@
+
 export type ContentBlockType =
   | "paragraph"
   | "heading2"
   | "heading3"
   | "proTip"
   | "imageWithCaption"
-  | "bulletList";
+  | "bulletList"
+  | "callToAction"
 
 export interface ParagraphBlock {
   type: "paragraph";
   text: string;
 }
-
+export interface CallToActionBlock {
+  type: "callToAction";
+  text: string;       // the surrounding text shown as paragraph
+  linkLabel: string;  // the clickable button/link text
+  href: string;       // the URL
+}
 export interface Heading2Block {
   type: "heading2";
   text: string;
@@ -52,7 +59,8 @@ export type ContentBlock =
   | Heading3Block
   | ProTipBlock
   | BulletListBlock
-  | ImageWithCaptionBlock;
+  | ImageWithCaptionBlock
+  | CallToActionBlock;
 
 export interface BlogAuthor {
   name: string;

@@ -10,8 +10,6 @@ export default function SafetyHero() {
           backgroundSize: "32px 32px",
         }}
       />
-
-     
       <div className="relative mb-8 group">
           {/* ── Preserved background pattern ── */}
       
