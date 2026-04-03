@@ -257,12 +257,13 @@ export default function BlogPostContent({ post }: { post: BlogPost }) {
           </div>
 
           {/* Cover Image */}
-          <div className="w-full aspect-[4/5] rounded-xl overflow-hidden mb-10 relative shadow-md">
+          <div className="w-full  rounded-xl overflow-hidden mb-10 relative shadow-md">
             <Image
               src={post.coverImage}
               alt={post.coverImageAlt}
-              fill
-              className="object-cover hover:scale-105 transition-transform duration-700"
+               width={800}
+               height={500}
+              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
               sizes="(max-width: 768px) 100vw, 800px"
               priority
             />

@@ -5,7 +5,7 @@ import HeroSection from "./_component/hero-section";
 import Sidebar from "./_component/sidebar-blog";
 
 export default function BlogPage() {
-  const v ="commit test"
+  
     return (
       <>
        <div className="flex flex-col items-center w-full flex-1 mt-5 py-6 pb-20">

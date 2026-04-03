@@ -485,6 +485,173 @@ relatedArticles: [
     },
   ],
 },
+{
+  slug: "why-travel-agents-lose-clients-before-booking",
+  title: "Why Travel Agents Lose Clients Right Before Booking",
+  excerpt:
+    "You prepare everything carefully. You select the right hotels. You build a solid itinerary. You send it to the client... and they reply: Looks good. Then silence. Here's what's really happening — and where the real opportunity is today.",
+  coverImage: "/img/blog/lose-client/why-travel-agents-lose-clients-before-booking.png",
+  coverImageAlt: "Travel agent reviewing an itinerary with a client before booking",
+  author: {
+    name: "CheckerIst Team",
+    role: "Travel Specialist & Founder @ CheckerIst",
+    avatar: "/img/logo1.png",
+  },
+  publishedAt: "2026-04-03",
+  readingTimeMinutes: 4,
+  category: "Travel Business",
+  tags: [
+    { label: "#TravelAgents", slug: "travel-agents" },
+    { label: "#TravelBusiness", slug: "travel-business" },
+    { label: "#ClientTrust", slug: "client-trust" },
+    { label: "#BookingConversion", slug: "booking-conversion" },
+  ],
+  content: [
+    // ── Intro ──
+    {
+      type: "paragraph",
+      text: "If you've been working in travel for a while, you've probably experienced this more times than you can count.",
+    },
+    {
+      type: "paragraph",
+      text: "You prepare everything carefully. You select the right hotels. You build a solid itinerary.",
+    },
+    {
+      type: "paragraph",
+      text: "You send it to the client... and they reply: \"Looks good.\"",
+    },
+    {
+      type: "paragraph",
+      text: "Then... silence. No confirmation. No booking. No clear reason.",
+    },
+ 
+    // ── Section 1: The Question ──
+    {
+      type: "heading2",
+      text: "What Actually Goes Wrong",
+      icon: "check_circle",
+    },
+    {
+      type: "paragraph",
+      text: "At some point, you start asking yourself what went wrong. Was it the price? Was it competition? Did they find something cheaper somewhere else?",
+    },
+    {
+      type: "paragraph",
+      text: "Sometimes, yes. But not always. Because in many cases, nothing is actually \"wrong\" with your offer.",
+    },
+    {
+      type: "paragraph",
+      text: "The real issue is much more subtle. It's hesitation.",
+    },
+ 
+    // ── Section 2: The Final Question ──
+    {
+      type: "heading2",
+      text: "The Question Every Client Asks Before Booking",
+    },
+    {
+      type: "paragraph",
+      text: "When a client reaches the final step before booking, they are not just comparing options anymore. They are asking themselves one simple question:",
+    },
+    {
+      type: "proTip",
+      icon: "lightbulb",
+      title: "The Real Question in Every Client's Mind",
+      text: "\"Am I sure about this?\" And the truth is, most of the time... they're not.",
+    },
+    {
+      type: "paragraph",
+      text: "Even today, with all the platforms available, all the reviews, all the photos — there is still a gap. Clients are looking at places they have never seen, in cities they don't know, trying to imagine what their experience will actually feel like. And that's not easy.",
+    },
+    {
+      type: "bulletList",
+      items: [
+        {
+          label: "Photos",
+          text: "Can look perfect but feel different in reality.",
+        },
+        {
+          label: "Descriptions",
+          text: "Sound great, but don't always tell the full story.",
+        },
+        {
+          label: "Reviews",
+          text: "Help, but they're not always consistent.",
+        },
+      ],
+    },
+    {
+      type: "paragraph",
+      text: "So even when everything \"looks good\"... there is still that small doubt. And that small doubt is enough to stop a decision. Not with a clear \"no\". But with delay. With hesitation. With silence.",
+    },
+ 
+    // ── Section 3: The Real Problem ──
+    {
+      type: "heading2",
+      text: "More Information Is Not the Answer",
+    },
+    {
+      type: "paragraph",
+      text: "As travel agents, we often try to fix this by giving more information. We send more links. More photos. More explanations.",
+    },
+    {
+      type: "paragraph",
+      text: "But at some point, more information doesn't solve the problem anymore. Because the issue is not a lack of content. It's a lack of certainty.",
+    },
+ 
+    // ── Section 4: The Shift ──
+    {
+      type: "heading2",
+      text: "Where Things Are Starting to Change",
+    },
+    {
+      type: "paragraph",
+      text: "And this is where things are starting to change in the industry. Some travel professionals are beginning to realize that their real value is not just in finding the best options.",
+    },
+    {
+      type: "paragraph",
+      text: "It's in making the client feel sure. That means going beyond \"this looks good\". It means helping the client feel: \"This is the right choice.\"",
+    },
+    {
+      type: "paragraph",
+      text: "And when you reach that level of clarity, something interesting happens. The conversation becomes smoother. Decisions happen faster. And trust becomes much stronger.",
+    },
+ 
+    // ── Conclusion ──
+    {
+      type: "heading2",
+      text: "The Real Opportunity for Travel Agents Today",
+    },
+    {
+      type: "paragraph",
+      text: "In the end, travelers don't just book based on price or itinerary. They book when they feel confident. And confidence is not built with more options. It's built by removing doubt.",
+    },
+    {
+      type: "paragraph",
+      text: "That's where the real opportunity is today for travel agents. Not necessarily in doing more... but in understanding better what actually blocks a decision.",
+    },
+  ],
+  relatedArticles: [
+    {
+      slug: "bali-driver-travel-sales-lesson",
+      title: "From a Bali Driver to a Travel Specialist",
+      excerpt:
+        "In 2023, I traveled to Bali with my wife. One experience marked me deeply — and I only understood its real meaning after returning to Tunisia.",
+      coverImage: "/img/blog/bali/bali-driver-travel.jpg",
+      coverImageAlt: "From a Bali Driver to a Travel Specialist",
+      category: "Travel Business",
+    },
+    {
+      slug: "travel-agents-verify-airbnb-rentals",
+      title: "How Travel Agents Can Earn More by Verifying Airbnb Rentals for Their Clients",
+      excerpt:
+        "The real opportunity for travel professionals isn't just finding new clients — it's understanding what existing clients worry about most.",
+      coverImage: "/img/blog/post agent/how-to-travel.png",
+      coverImageAlt: "Travel agent reviewing an Airbnb listing on a laptop",
+      category: "Travel Business",
+    },
+  ],
+},
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
