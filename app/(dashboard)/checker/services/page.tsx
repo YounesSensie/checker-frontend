@@ -1,28 +1,27 @@
-// app/(checker)/services/page.tsx
-// Server Component — entry point for the Checker Services page.
 
-//import { Suspense } from "react";
-//import { BookingFilter } from "./_components/types-services";
-//import { ServicesListSkeleton } from "./_components/services-list";
-//import { AsyncBookings, AsyncServices } from "./_components/Asycsection";
-//import { BookingsListSkeleton } from "./_components/booking-list";
-//import { getSession } from "@/auth";
-//import { redirect } from "next/navigation";
-//import prisma from "@/lib/db";
 
+import { Suspense } from "react";
+import { BookingFilter } from "./_components/types-services";
+import { ServicesListSkeleton } from "./_components/services-list";
+import { AsyncBookings, AsyncServices } from "./_components/Asycsection";
+import { BookingsListSkeleton } from "./_components/booking-list";
+import { getSession } from "@/auth";
+import { redirect } from "next/navigation";
+import prisma from "@/lib/db";
 
 
 
-//interface PageProps {
-  //searchParams: Promise<{ filter?: string }>;
-//}
 
-//function parseFilter(raw?: string): BookingFilter {
-  //if (raw === "PENDING" || raw === "CONFIRMED") return raw;
-  //return "ALL";
-//}
+interface PageProps {
+  searchParams: Promise<{ filter?: string }>;
+}
 
-{/*export  default async function CheckerServicesPage({ searchParams }: PageProps) {
+function parseFilter(raw?: string): BookingFilter {
+  if (raw === "PENDING" || raw === "CONFIRMED") return raw;
+  return "ALL";
+}
+
+export  default async function CheckerServicesPage({ searchParams }: PageProps) {
   const filterdata = (await searchParams).filter
   const filter = parseFilter(filterdata);
   const session = await getSession()
@@ -44,10 +43,10 @@
   return (
     <main className="flex flex-col grow p-6 md:px-10 md:py-8 gap-10 max-w-7xl mx-auto w-full">
     
-   //   <Suspense fallback={<ServicesListSkeleton />}>
+      <Suspense fallback={<ServicesListSkeleton />}>
         
-     //   <AsyncServices checkerId={user?.checkerProfile?.id} />
-      //</Suspense>
+        <AsyncServices checkerId={user?.checkerProfile?.id} />
+      </Suspense>
 
    
       <Suspense key={filter} fallback={<BookingsListSkeleton />}>
@@ -57,8 +56,8 @@
     </main>
   );
 }
-*/}
-import { getSession } from '@/auth'
+
+{/*import { getSession } from '@/auth'
 import ComingSoon from '@/components/comming-soon'
 import { redirect } from 'next/navigation'
 import React from 'react'
@@ -78,4 +77,4 @@ const ServicesPage = async() => {
     )
 }
 
-export default ServicesPage
+export default ServicesPage*/}

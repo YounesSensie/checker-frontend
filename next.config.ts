@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         hostname: '2xzizguscgzomi2t.public.blob.vercel-storage.com',
         port:'',
         search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'maps.googleapis.com',
+        port: '',
+        search: '', 
       }
     ],
     formats: ['image/avif', 'image/webp'],
@@ -36,9 +42,6 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
-  
-
-  
   // Add these headers for better performance
   async headers() {
     return [

@@ -153,7 +153,6 @@ export default async function CheckerProfilePage({ params, searchParams }: PageP
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* Left: Profile Header (Sticky) */}
             <ProfileHeader checker={checker} />
-
             {/* Right: Main Content */}
             <div className="lg:col-span-8 xl:col-span-9 flex flex-col gap-6">
               {/*<StatsDashboard checker={checker} />*/}
@@ -163,11 +162,6 @@ export default async function CheckerProfilePage({ params, searchParams }: PageP
               </div>
               <SpecialtiesSection specialties={checker.specialties} />
               <PricingCoverage checker={checker} />
-              {/*<ReviewsSection
-                reviews={checker.reviews}
-                totalReviews={checker.totalReviews}
-                averageRating={checker.averageRating}
-              />*/}
               
             </div>
           </div>

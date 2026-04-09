@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.css"
 import Script from "next/script";
 import { Inter } from 'next/font/google';
 // ✅ Optimize font loading
@@ -58,10 +58,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={inter.variable}
-      >
+    <html lang="en" suppressHydrationWarning>
+      
         <head>
            <Script
           id="microsoft-clarity"
@@ -105,6 +103,9 @@ export default function RootLayout({
             }}
             />
       </head>
+      <body
+        className={inter.variable}
+      >
         <main>
         {children}
         </main>

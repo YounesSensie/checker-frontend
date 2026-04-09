@@ -4,6 +4,7 @@ import {  CheckCheck, MapPin } from "lucide-react";
 // We'll inline the icon since CheckerCircle doesn't exist
 import { CheckCircle } from "lucide-react";
 import { CheckerProfile } from "./types-checker";
+import Image from "next/image";
 
 interface PricingCoverageProps {
   checker: CheckerProfile;
@@ -25,6 +26,7 @@ export function PricingCoverage({ checker }: PricingCoverageProps) {
       </div>
     );
   }
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {/* Pricing Card */}
@@ -65,11 +67,7 @@ export function PricingCoverage({ checker }: PricingCoverageProps) {
             src={`https://maps.googleapis.com/maps/api/staticmap?center=${checker.user.city},${checker.user.country}&zoom=10&size=600x300&style=feature:all|element:labels|visibility:simplified&style=feature:road|color:0xffffff&style=feature:landscape|color:0xf0f0f0`}
             alt={`Map showing ${checker.user.city} service area`}
             className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-500"
-            onError={(e) => {
-              // Fallback to a static map image if API fails
-              (e.target as HTMLImageElement).src =
-                "https://lh3.googleusercontent.com/aida-public/AB6AXuDWo6mTOlf4G_2Ds425PZ9R4aS0cIehcuESNDQ662f77Wh7EhyFBQ-3XqEirnDed2VLEa41V9xF2iBzMFgVrOXdIpmrF6kx0xRTJVwrw_Cw9dTO8_i2lvytA63_wo5aR_d8Y7-Cw62JPo33H2gu2YjixPjOodX0CUkBiTyAMe2zPoxnpyyI1nKVLa7FDGMjkLQ3b7cI5Mbzw6UOyT4g6iGLOYuuKydmo20044ZEmoKJolCw0cng_qn94GxfEZisMsQGR0nlSf7FODQ";
-            }}
+           
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
             <div className="bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
