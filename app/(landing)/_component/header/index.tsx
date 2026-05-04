@@ -19,6 +19,7 @@ const Header = () => {
     pathname.startsWith("/travel-agent") ||
     pathname.startsWith("/blog") ||
     pathname.startsWith("/safety") ||
+    pathname.startsWith('/sign-up')||
     pathname.startsWith("/sign-in");
 
   useEffect(() => {
