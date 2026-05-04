@@ -652,13 +652,12 @@ relatedArticles: [
     },
   ],
 },
-
 {
   slug: "why-travel-agents-getting-harder",
   title: "Why Being a Travel Agent Is Getting Harder (And What Smart Agents Are Doing About It)",
   excerpt:
     "Something has changed. Conversations take longer. Clients ask more questions. Decisions feel slower. And sometimes, after putting real effort into building an itinerary… the booking simply doesn't happen. Here's what's really going on.",
-  coverImage: "/img/blog/travel-agents-harder/cover.png",
+  coverImage: "/img/blog/travel-agent-harder.png",
   coverImageAlt: "Travel agent reviewing listings with a client showing signs of hesitation",
   author: {
     name: "CheckerIst Team",
@@ -846,7 +845,7 @@ relatedArticles: [
   title: "How to Avoid Airbnb Scams Before Booking (A Practical Guide for Travelers)",
   excerpt:
     "Booking a place online has never been easier — but behind the photos and descriptions, the reality is not always the same. Here's a practical guide to protect yourself before you commit.",
-  coverImage: "/img/blog/airbnb-scams/cover.png",
+  coverImage: "/img/blog/Airbnbscams.png",
   coverImageAlt: "Traveler reviewing an Airbnb listing on a laptop with a cautious expression",
   author: {
     name: "CheckerIst Team",
