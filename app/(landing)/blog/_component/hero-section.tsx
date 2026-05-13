@@ -7,7 +7,7 @@ import { blogPosts } from "../[slug]/_components/blogpost";
 export default function HeroSection() {
   // Always use the Bali driver post as the featured hero
   const featured = blogPosts.find(
-    (p) => p.slug === "how-to-avoid-airbnb-scams-before-booking"
+    (p) => p.slug === "can-travel-agents-earn-commission-on-vacation-rentals-2026"
   ) ?? blogPosts[0];
 
   const formattedDate = new Date(featured.publishedAt).toLocaleDateString("en-US", {
